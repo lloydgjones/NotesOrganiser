@@ -31,7 +31,7 @@ export class NoteComponent implements OnInit {
         timeOut: 1500,
         progressBar: true
       });
-      this.getNoteData;
-    })
+      this.getNoteData();
+    });
   }
 }
