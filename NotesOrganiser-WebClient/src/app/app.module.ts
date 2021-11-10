@@ -23,7 +23,7 @@ const appRoutes:Routes = [
     path: 'add-note', component:AddNoteComponent
   },
   {
-    path: 'edit-note', component:EditNoteComponent
+    path: 'edit/:id', component:EditNoteComponent
   }
 ]
 

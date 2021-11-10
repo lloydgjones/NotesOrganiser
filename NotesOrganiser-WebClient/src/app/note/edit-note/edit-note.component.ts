@@ -44,7 +44,7 @@ export class EditNoteComponent implements OnInit {
       this.toastr.success(JSON.stringify(this.data.code), JSON.stringify(this.data.message), {
         timeOut: 1500,
         progressBar: true
-      })
+      });
     });
   }
 }
