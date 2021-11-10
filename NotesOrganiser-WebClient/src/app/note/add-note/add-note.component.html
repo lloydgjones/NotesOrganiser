@@ -11,7 +11,7 @@
 
     <div class="form-group">
       <label for="content">Content</label>
-      <input type="text" formControlName="content" [ngClass]="{ 'is-invalid': submitted && f.content.errors }" class="form-control" placeholder="Enter Note Text">
+      <quill-editor type="text" formControlName="content" [ngClass]="{ 'is-invalid': submitted && f.content.errors }" placeholder="Enter Note Text"></quill-editor>
 
       <div *ngIf="submitted && f.content.errors" class="invalid-feedback">
         <div *ngIf="f.content.errors.required">Content is Required</div>

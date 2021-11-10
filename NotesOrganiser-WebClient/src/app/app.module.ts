@@ -4,6 +4,8 @@ import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@Angular/platform-browser/animations';
 import { RouterModule, Routes } from '@angular/router';
 
+import { QuillModule } from 'ngx-quill'
+
 import { AppComponent } from './app.component';
 import { NoteComponent } from './note/note/note.component';
 import { NavbarComponent } from './navbar/navbar/navbar.component';
@@ -42,7 +44,13 @@ const appRoutes:Routes = [
     ReactiveFormsModule,
     ToastrModule.forRoot(),
     BrowserAnimationsModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    QuillModule.forRoot({
+      customOptions: [{
+        import: 'formats/font',
+        whitelist: ['mirza', 'roboto', 'aref', 'serif', 'sansserif', 'monospace']
+      }]
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
