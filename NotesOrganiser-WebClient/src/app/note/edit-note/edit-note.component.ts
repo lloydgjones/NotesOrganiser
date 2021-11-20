@@ -4,6 +4,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { NoteService } from 'src/app/services/note.service';
 import { Note } from '../../model/note.model';
+import { Router} from '@angular/router';
 
 @Component({
   selector: 'app-edit-note',
@@ -14,7 +15,7 @@ export class EditNoteComponent implements OnInit {
   note = new Note();
   id:any;
   data:any;
-  constructor(private noteService: NoteService, private route: ActivatedRoute, private toastr: ToastrService) { }
+  constructor(private noteService: NoteService, private route: ActivatedRoute, private toastr: ToastrService, private router: Router) { }
 
   form = new FormGroup({
     name: new FormControl(''),
@@ -24,10 +25,10 @@ export class EditNoteComponent implements OnInit {
   ngOnInit(): void {
     this.id = this.route.snapshot.params.id;
     console.log(this.id);
-    this.getData();
+    this.getNoteData();
   }
 
-  getData(){
+  getNoteData(){
     this.noteService.getDataById(this.id).subscribe(res => {
       this.data = res;
       this.note = this.data;
@@ -45,6 +46,19 @@ export class EditNoteComponent implements OnInit {
         timeOut: 1500,
         progressBar: true
       });
+    });
+  }
+
+  deleteData(id) {
+    this.noteService.deleteData(id).subscribe(res => {
+      this.data = res;
+      this.toastr.error(JSON.stringify(this.data.code), JSON.stringify(this.data.message),
+      {
+        timeOut: 1500,
+        progressBar: true
+      });
+      this.getNoteData();
+      this.router.navigateByUrl('/');
     });
   }
 }

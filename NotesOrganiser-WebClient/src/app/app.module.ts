@@ -4,6 +4,8 @@ import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@Angular/platform-browser/animations';
 import { RouterModule, Routes } from '@angular/router';
 
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+
 import { QuillModule } from 'ngx-quill'
 
 import { AppComponent } from './app.component';
@@ -19,7 +21,7 @@ import { EditNoteComponent } from './note/edit-note/edit-note.component'
 
 const appRoutes:Routes = [
   {
-    path: '', component:NoteComponent
+    path: 'notes', component:NoteComponent
   },
   {
     path: 'add-note', component:AddNoteComponent
@@ -52,7 +54,7 @@ const appRoutes:Routes = [
       }]
     })
   ],
-  providers: [],
+  providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
