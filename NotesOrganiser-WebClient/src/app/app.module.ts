@@ -9,35 +9,51 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { QuillModule } from 'ngx-quill'
 
 import { AppComponent } from './app.component';
-import { NoteComponent } from './note/note/note.component';
 import { NavbarComponent } from './navbar/navbar/navbar.component';
 
 import { HttpClientModule } from '@angular/common/http';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+import { NoteComponent } from './note/note/note.component';
 import { AddNoteComponent } from './note/add-note/add-note.component';
 import { EditNoteComponent } from './note/edit-note/edit-note.component'
+
+import { TaskComponent } from './task/task/task.component';
+import { AddTaskComponent } from './task/add-task/add-task.component';
+import { EditTaskComponent } from './task/edit-task/edit-task.component'
 
 const appRoutes:Routes = [
   {
     path: 'notes', component:NoteComponent
   },
   {
+    path: 'tasks', component:TaskComponent
+  },
+  {
     path: 'add-note', component:AddNoteComponent
   },
   {
-    path: 'edit/:id', component:EditNoteComponent
+    path: 'add-task', component:AddTaskComponent
+  },
+  {
+    path: 'note/edit/:id', component:EditNoteComponent
+  },
+  {
+    path: 'task/edit/:id', component:EditTaskComponent
   }
-]
+];
 
 @NgModule({
   declarations: [
     AppComponent,
-    NoteComponent,
     NavbarComponent,
+    NoteComponent,
+    TaskComponent,
     AddNoteComponent,
-    EditNoteComponent
+    AddTaskComponent,
+    EditNoteComponent,
+    EditTaskComponent
   ],
   imports: [
     BrowserModule,

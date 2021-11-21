@@ -5,14 +5,14 @@
     </div>
 
     <div class="form-group">
-      <br><quill-editor type="text" formControlName="content" placeholder="Enter Note Text"></quill-editor>
+      <br><quill-editor type="text" formControlName="content" placeholder="Enter Task Text" [maxLength]="250"></quill-editor>
     </div>
 
     <br>
 
     <div class="form-group">
       <button class="btn btn-space btn-sm btn-dark">Save</button>
-      <button type="button" class="btn btn-space btn-sm btn-danger" (click)="deleteData(note._id)">Delete</button>
+      <button type="button" class="btn btn-space btn-sm btn-danger" (click)="deleteData(task._id)">Delete</button>
     </div>
   </form>
 </div>

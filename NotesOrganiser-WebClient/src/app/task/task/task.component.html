@@ -8,10 +8,10 @@
     </thead>
 
     <tbody>
-      <tr *ngFor="let note of notes">
-        <td>{{note.name}}</td>
+      <tr *ngFor="let task of tasks">
+        <td>{{task.name}}</td>
         <td>
-          <button class="btn btn-primary btn-sm mx-auto" routerLink="/note/edit/{{note._id}}">Edit</button>
+          <button class="btn btn-primary btn-sm mx-auto" routerLink="/task/edit/{{task._id}}">Edit</button>
         </td>
       </tr>
     </tbody>

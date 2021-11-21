@@ -9,7 +9,7 @@
     </div>
 
     <div class="form-group">
-      <br><quill-editor type="text" formControlName="content" [ngClass]="{ 'is-invalid': submitted && f.content.errors }" placeholder="Enter Note Text"></quill-editor>
+      <br><quill-editor type="text" formControlName="content" [ngClass]="{ 'is-invalid': submitted && f.content.errors }" placeholder="Enter Task Text" [maxLength]="250"></quill-editor>
 
       <div *ngIf="submitted && f.content.errors" class="invalid-feedback">
         <div *ngIf="f.content.errors.required">Content is Required</div>
