@@ -58,7 +58,7 @@ export class EditTaskComponent implements OnInit {
         progressBar: true
       });
       this.getTaskData();
-      this.router.navigateByUrl('/');
+      this.router.navigateByUrl('/tasks');
     });
   }
 }

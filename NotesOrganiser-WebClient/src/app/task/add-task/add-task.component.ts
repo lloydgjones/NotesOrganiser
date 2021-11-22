@@ -43,7 +43,7 @@ export class AddTaskComponent implements OnInit {
         timeOut: 1500,
         progressBar: true
       });
-      this.router.navigateByUrl('/');
+      this.router.navigateByUrl('/tasks');
     });
   }
 }

@@ -58,7 +58,7 @@ export class EditNoteComponent implements OnInit {
         progressBar: true
       });
       this.getNoteData();
-      this.router.navigateByUrl('/');
+      this.router.navigateByUrl('/notes');
     });
   }
 }
