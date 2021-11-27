@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, Component } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@Angular/platform-browser/animations';
@@ -21,9 +21,20 @@ import { EditNoteComponent } from './note/edit-note/edit-note.component'
 
 import { TaskComponent } from './task/task/task.component';
 import { AddTaskComponent } from './task/add-task/add-task.component';
-import { EditTaskComponent } from './task/edit-task/edit-task.component'
+import { EditTaskComponent } from './task/edit-task/edit-task.component';
+import { LoginComponent } from './user/login/login.component';
+import { RegisterComponent } from './user/register/register.component'
 
 const appRoutes:Routes = [
+  {
+    path: '', redirectTo:'login', pathMatch:'full'
+  },
+  {
+    path: 'login', component:LoginComponent
+  },
+  {
+    path: 'register', component:RegisterComponent
+  },
   {
     path: 'notes', component:NoteComponent
   },
@@ -53,7 +64,9 @@ const appRoutes:Routes = [
     AddNoteComponent,
     AddTaskComponent,
     EditNoteComponent,
-    EditTaskComponent
+    EditTaskComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
