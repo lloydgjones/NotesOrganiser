@@ -25,6 +25,9 @@ import { EditTaskComponent } from './task/edit-task/edit-task.component';
 import { LoginComponent } from './user/login/login.component';
 import { RegisterComponent } from './user/register/register.component'
 
+import { UserService } from './services/user.service';
+import { SettingsComponent } from './settings/settings.component';
+
 const appRoutes:Routes = [
   {
     path: '', redirectTo:'login', pathMatch:'full'
@@ -34,6 +37,9 @@ const appRoutes:Routes = [
   },
   {
     path: 'register', component:RegisterComponent
+  },
+  {
+    path: 'settings', component:SettingsComponent
   },
   {
     path: 'notes', component:NoteComponent
@@ -66,7 +72,8 @@ const appRoutes:Routes = [
     EditNoteComponent,
     EditTaskComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    SettingsComponent
   ],
   imports: [
     BrowserModule,
@@ -83,7 +90,8 @@ const appRoutes:Routes = [
       }]
     })
   ],
-  providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}],
-  bootstrap: [AppComponent]
+  providers: [UserService, {provide: LocationStrategy, useClass: HashLocationStrategy}],
+  bootstrap: [AppComponent],
+  exports: [RouterModule]
 })
 export class AppModule { }

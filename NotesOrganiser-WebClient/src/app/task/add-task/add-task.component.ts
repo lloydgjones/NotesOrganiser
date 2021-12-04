@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { UserService } from 'src/app/services/user.service';
 import { TaskService } from 'src/app/services/task.service';
-
 import { ToastrService } from 'ngx-toastr';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router} from '@angular/router';
 
 @Component({
   selector: 'app-add-task',
@@ -14,7 +14,13 @@ export class AddTaskComponent implements OnInit {
   data;
   form:FormGroup;
   submitted=false;
-  constructor(private taskService: TaskService, private formBuilder: FormBuilder, private toastr: ToastrService, private router: Router) { }
+  constructor(private _router: Router, private _user: UserService, private taskService: TaskService, private formBuilder: FormBuilder, private toastr: ToastrService) {
+    this._user.getUser()
+    .subscribe(
+      data=>console.log(data),
+      error=>this._router.navigate(['/login'])
+    )
+  }
 
   createForm() {
     this.form = this.formBuilder.group({
@@ -43,7 +49,7 @@ export class AddTaskComponent implements OnInit {
         timeOut: 1500,
         progressBar: true
       });
-      this.router.navigateByUrl('/tasks');
+      this._router.navigateByUrl('/tasks');
     });
   }
 }
