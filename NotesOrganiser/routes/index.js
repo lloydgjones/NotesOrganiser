@@ -54,6 +54,7 @@ router.get('/api/task/:id', (req, res) => {
 // Save New Note
 router.post('/api/note/add', (req, res) => {
     const note = new Note({
+        account: req.body.account,
         name: req.body.name,
         content: req.body.content
     });
@@ -69,6 +70,7 @@ router.post('/api/note/add', (req, res) => {
 // Save New Task
 router.post('/api/task/add', (req, res) => {
     const task = new Task({
+        account: req.body.account,
         name: req.body.name,
         content: req.body.content
     });
@@ -178,7 +180,7 @@ function isValidUser(req, res, next){
 }
 
 // Logout
-router.get('/api/logout', isValidUser, function (req, res, next) {
+router.get('/api/user/logout', isValidUser, function (req, res, next) {
     req.logout();
     return res.status(200).json({message:'Logout Success'});
 });

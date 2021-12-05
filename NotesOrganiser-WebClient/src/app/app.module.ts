@@ -26,7 +26,7 @@ import { LoginComponent } from './user/login/login.component';
 import { RegisterComponent } from './user/register/register.component'
 
 import { UserService } from './services/user.service';
-import { SettingsComponent } from './settings/settings.component';
+import { SettingsComponent } from './user/settings/settings.component';
 
 const appRoutes:Routes = [
   {

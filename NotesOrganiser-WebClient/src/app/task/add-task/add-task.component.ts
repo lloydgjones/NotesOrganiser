@@ -14,16 +14,18 @@ export class AddTaskComponent implements OnInit {
   data;
   form:FormGroup;
   submitted=false;
+  email: String='_____';
   constructor(private _router: Router, private _user: UserService, private taskService: TaskService, private formBuilder: FormBuilder, private toastr: ToastrService) {
     this._user.getUser()
     .subscribe(
-      data=>console.log(data),
+      data=>this.getAccount(data),
       error=>this._router.navigate(['/login'])
     )
   }
 
   createForm() {
     this.form = this.formBuilder.group({
+      account: this.email,
       name: ['', Validators.required],
       content: ['', Validators.required]
     });
@@ -31,6 +33,10 @@ export class AddTaskComponent implements OnInit {
 
   ngOnInit(): void {
     this.createForm();
+  }
+
+  getAccount(data){
+    this.email = data.email;
   }
 
   get f() {

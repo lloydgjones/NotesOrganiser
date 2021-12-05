@@ -18,7 +18,6 @@ connectDB();
 // Passport
 const session = require('express-session');
 const passport = require('passport');
-const MongoStore = require('connect-mongo')(session);
 
 app.use(session({
     name: 'myname.sid',
@@ -29,8 +28,7 @@ app.use(session({
         maxAge: 36000000,
         hhtpOnly: false,
         secure: false
-    },
-    store: new MongoStore({ mongooseConnection: mongoose.connection })
+    }
 }));
 
 require('./passport-settings');

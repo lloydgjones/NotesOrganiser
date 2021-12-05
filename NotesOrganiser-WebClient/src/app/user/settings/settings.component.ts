@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { UserService } from '../services/user.service';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-settings',
@@ -13,7 +13,7 @@ export class SettingsComponent implements OnInit {
   constructor(private _router: Router, private _user: UserService) {
     this._user.getUser()
     .subscribe(
-      data=>this.addName(data),
+      data=>this.getName(data),
       error=>this._router.navigate(['/login'])
     )
   }
@@ -21,14 +21,14 @@ export class SettingsComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  addName(data){
+  getName(data){
     this.username = data.username;
   }
 
   logout(){
     this._user.logout()
     .subscribe(
-        data => {console.log(data); this._router.navigate(['/login']);},
+        data => {console.log(data); this._router.navigate(['/login'])},
         error => console.error(error)
     );
   }

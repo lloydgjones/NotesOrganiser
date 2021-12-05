@@ -12,16 +12,21 @@ import { ToastrService } from 'ngx-toastr';
 export class TaskComponent implements OnInit {
   tasks:any;
   data:any;
+  email: String='_____';
   constructor(private _router: Router, private _user: UserService, private taskService: TaskService, private toastr: ToastrService) {
     this._user.getUser()
     .subscribe(
-      data=>console.log(data),
+      data=>this.getAccount(data),
       error=>this._router.navigate(['/login'])
     )
   }
 
   ngOnInit(): void {
     this.getData();
+  }
+
+  getAccount(data){
+    this.email = data.email;
   }
 
   getData() {
