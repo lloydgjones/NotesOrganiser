@@ -2,6 +2,7 @@ import { UserService } from 'src/app/services/user.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +15,7 @@ export class LoginComponent implements OnInit {
     email: new FormControl(null, [Validators.email, Validators.required]),
     password: new FormControl(null, Validators.required)
   })
-  constructor(private _router: Router, private _user: UserService) { }
+  constructor(private _router: Router, private _user: UserService, private toastr: ToastrService) { }
 
   ngOnInit(): void {
   }
@@ -31,8 +32,16 @@ export class LoginComponent implements OnInit {
 
     this._user.login(JSON.stringify(this.loginForm.value))
     .subscribe(
-        data => {console.log(data); this._router.navigate(['/settings']);},
-        error => console.error(error)
+      data => {this.toastr.success(JSON.stringify(200), JSON.stringify(data),
+      {
+        timeOut: 1500,
+        progressBar: true
+      }); this._router.navigate(['/settings']);},
+      error => this.toastr.error(JSON.stringify(401), JSON.stringify(error),
+      {
+        timeOut: 1500,
+        progressBar: true
+      })
     );
   }
 }

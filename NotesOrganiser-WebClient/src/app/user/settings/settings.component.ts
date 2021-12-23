@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { UserService } from '../../services/user.service';
 
 @Component({
@@ -10,7 +11,7 @@ import { UserService } from '../../services/user.service';
 export class SettingsComponent implements OnInit {
 
   username: String='_____';
-  constructor(private _router: Router, private _user: UserService) {
+  constructor(private _router: Router, private _user: UserService, private toastr: ToastrService) {
     this._user.getUser()
     .subscribe(
       data=>this.getName(data),
@@ -28,8 +29,16 @@ export class SettingsComponent implements OnInit {
   logout(){
     this._user.logout()
     .subscribe(
-        data => {console.log(data); this._router.navigate(['/login'])},
-        error => console.error(error)
+      data => {this.toastr.success(JSON.stringify(200), JSON.stringify(data),
+      {
+        timeOut: 1500,
+        progressBar: true
+      }); this._router.navigate(['/login']);},
+      error => this.toastr.error(JSON.stringify(401), JSON.stringify(error),
+      {
+        timeOut: 1500,
+        progressBar: true
+      })
     );
   }
 }
