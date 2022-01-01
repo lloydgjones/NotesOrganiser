@@ -11,6 +11,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class NoteComponent implements OnInit {
   notes:any[];
+  allNotes:any[];
   data:any;
   email: String='_____';
   constructor(private _router: Router, private _user: UserService, private noteService:NoteService, private toastr: ToastrService) {
@@ -31,7 +32,8 @@ export class NoteComponent implements OnInit {
 
   getData() {
     this.noteService.getData().subscribe(res => {
-      this.notes = Object.keys(res).map(key => ({type: key, value: res[key]}));
+      this.allNotes = Object.keys(res).map(key => ({type: key, value: res[key]}));
+      this.notes = this.allNotes.filter(note => note.account == this.email);
     });
   }
 }

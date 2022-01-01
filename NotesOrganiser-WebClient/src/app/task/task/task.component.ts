@@ -10,7 +10,8 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./task.component.css']
 })
 export class TaskComponent implements OnInit {
-  tasks:any;
+  tasks:any[];
+  allTasks:any[];
   data:any;
   email: String='_____';
   constructor(private _router: Router, private _user: UserService, private taskService: TaskService, private toastr: ToastrService) {
@@ -31,7 +32,8 @@ export class TaskComponent implements OnInit {
 
   getData() {
     this.taskService.getData().subscribe(res => {
-      this.tasks = res;
+      this.allTasks = Object.keys(res).map(key => ({type: key, value: res[key]}));
+      this.tasks = this.allTasks.filter(task => task.account == this.email);
     });
   }
 }
