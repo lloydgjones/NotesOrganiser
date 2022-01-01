@@ -31,7 +31,6 @@ export class TaskComponent implements OnInit {
 
   getData() {
     this.taskService.getData().subscribe(res => {
-      console.log(res);
       this.tasks = res;
     });
   }

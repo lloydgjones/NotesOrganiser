@@ -10,7 +10,7 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
+  data:any;
   loginForm:FormGroup = new FormGroup({
     email: new FormControl(null, [Validators.email, Validators.required]),
     password: new FormControl(null, Validators.required)
@@ -30,18 +30,14 @@ export class LoginComponent implements OnInit {
       return;
     }
 
-    this._user.login(JSON.stringify(this.loginForm.value))
-    .subscribe(
-      data => {this.toastr.success(JSON.stringify(200), JSON.stringify(data),
-      {
-        timeOut: 1500,
-        progressBar: true
-      }); this._router.navigate(['/settings']);},
-      error => this.toastr.error(JSON.stringify(401), JSON.stringify(error),
-      {
-        timeOut: 1500,
-        progressBar: true
-      })
+    this._user.login(JSON.stringify(this.loginForm.value)).subscribe(res => {
+        this.data = res;
+        this.toastr.success(JSON.stringify(this.data.code), JSON.stringify(this.data.message), {
+          timeOut: 1500,
+          progressBar: true
+        });
+
+      this._router.navigate(['/settings']);},
     );
   }
 }

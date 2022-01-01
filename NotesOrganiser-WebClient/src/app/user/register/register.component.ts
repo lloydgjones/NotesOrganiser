@@ -11,7 +11,7 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-
+  data:any;
   registerForm:FormGroup = new FormGroup({
     email: new FormControl(null, [Validators.email, Validators.required]),
     username: new FormControl(null, Validators.required),
@@ -30,18 +30,24 @@ export class RegisterComponent implements OnInit {
       return;
     }
 
-    this._userService.insertData(JSON.stringify(this.registerForm.value))
-    .subscribe(
-      data => {this.toastr.success(JSON.stringify(200), JSON.stringify(data),
-      {
-        timeOut: 1500,
-        progressBar: true
-      }); this._router.navigate(['/login']);},
-      error => this.toastr.error(JSON.stringify(401), JSON.stringify(error),
-      {
-        timeOut: 1500,
-        progressBar: true
-      })
+    this._userService.insertData(JSON.stringify(this.registerForm.value)).subscribe(res => {
+      this.data = res;
+
+      if (this.data.code == 201) {
+        this.toastr.success(JSON.stringify(this.data.code), JSON.stringify(this.data.message), {
+          timeOut: 1500,
+          progressBar: true
+        });
+
+        this._router.navigate(['/login']);
+      }
+
+      else {
+        this.toastr.error(JSON.stringify(this.data.code), JSON.stringify(this.data.message), {
+          timeOut: 1500,
+          progressBar: true
+        });
+      }},
     );
   }
 }

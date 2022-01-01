@@ -10,7 +10,7 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./note.component.css']
 })
 export class NoteComponent implements OnInit {
-  notes:any;
+  notes:any[];
   data:any;
   email: String='_____';
   constructor(private _router: Router, private _user: UserService, private noteService:NoteService, private toastr: ToastrService) {
@@ -31,8 +31,7 @@ export class NoteComponent implements OnInit {
 
   getData() {
     this.noteService.getData().subscribe(res => {
-      console.log(res);
-      this.notes = res;
+      this.notes = Object.keys(res).map(key => ({type: key, value: res[key]}));
     });
   }
 }

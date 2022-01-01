@@ -52,8 +52,7 @@ export class EditNoteComponent implements OnInit {
   deleteData(id) {
     this.noteService.deleteData(id).subscribe(res => {
       this.data = res;
-      this.toastr.error(JSON.stringify(this.data.code), JSON.stringify(this.data.message),
-      {
+      this.toastr.error(JSON.stringify(this.data.code), JSON.stringify(this.data.message), {
         timeOut: 1500,
         progressBar: true
       });
