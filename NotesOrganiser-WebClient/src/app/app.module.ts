@@ -30,7 +30,7 @@ import { SettingsComponent } from './user/settings/settings.component';
 
 const appRoutes:Routes = [
   {
-    path: '', redirectTo:'login', pathMatch:'full'
+    path: '', redirectTo:'settings', pathMatch:'full'
   },
   {
     path: 'login', component:LoginComponent

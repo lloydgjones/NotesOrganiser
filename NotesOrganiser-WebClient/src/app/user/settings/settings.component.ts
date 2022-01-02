@@ -10,16 +10,16 @@ import { UserService } from '../../services/user.service';
 })
 export class SettingsComponent implements OnInit {
   data:any;
-  username: String='_____';
+  username: String;
   constructor(private _router: Router, private _user: UserService, private toastr: ToastrService) {
+  }
+
+  ngOnInit(): void {
     this._user.getUser()
     .subscribe(
       data=>this.getName(data),
       error=>this._router.navigate(['/login'])
-    )
-  }
-
-  ngOnInit(): void {
+    );
   }
 
   getName(data){

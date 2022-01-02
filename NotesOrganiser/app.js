@@ -19,6 +19,7 @@ connectDB();
 const session = require('express-session');
 const passport = require('passport');
 
+const MongoStore = require('connect-mongo');
 app.use(session({
     name: 'myname.sid',
     resave: false,
@@ -26,9 +27,12 @@ app.use(session({
     secret:'arsene',
     cookie:{
         maxAge: 36000000,
-        hhtpOnly: false,
+        httpOnly: false,
         secure: false
-    }
+    },
+    store: MongoStore.create({
+        mongoUrl: process.env.MONGO_URI,
+    })
 }));
 
 require('./passport-settings');

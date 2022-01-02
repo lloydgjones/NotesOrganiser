@@ -13,16 +13,17 @@ export class NoteComponent implements OnInit {
   notes:any[];
   allNotes:any[];
   data:any;
-  email: String='_____';
+  email: String;
   constructor(private _router: Router, private _user: UserService, private noteService:NoteService, private toastr: ToastrService) {
+  }
+
+  ngOnInit(): void {
     this._user.getUser()
     .subscribe(
       data=>this.getAccount(data),
       error=>this._router.navigate(['/login'])
-    )
-  }
+    );
 
-  ngOnInit(): void {
     this.getData();
   }
 
