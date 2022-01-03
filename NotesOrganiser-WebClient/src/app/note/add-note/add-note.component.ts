@@ -11,8 +11,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./add-note.component.css']
 })
 export class AddNoteComponent implements OnInit {
-  data;
-  form:FormGroup;
+  data: any;
+  form: FormGroup;
   submitted=false;
   email: String;
   constructor(private _router: Router, private _user: UserService, private noteService: NoteService, private formBuilder: FormBuilder, private toastr: ToastrService) {
@@ -32,12 +32,11 @@ export class AddNoteComponent implements OnInit {
       data=>this.getAccount(data),
       error=>this._router.navigate(['/login'])
     );
-
-    this.createForm();
   }
 
   getAccount(data){
     this.email = data.email;
+    this.createForm();
   }
 
   get f() {
@@ -49,6 +48,8 @@ export class AddNoteComponent implements OnInit {
     if(this.form.invalid) {
         return;
       }
+
+      console.log(this.form.value);
 
     this.noteService.insertData(this.form.value).subscribe(res => {
       this.data = res;

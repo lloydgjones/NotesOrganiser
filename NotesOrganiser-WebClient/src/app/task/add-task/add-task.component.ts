@@ -11,8 +11,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./add-task.component.css']
 })
 export class AddTaskComponent implements OnInit {
-  data;
-  form:FormGroup;
+  data: any;
+  form: FormGroup;
   submitted=false;
   email: String;
   constructor(private _router: Router, private _user: UserService, private taskService: TaskService, private formBuilder: FormBuilder, private toastr: ToastrService) {
@@ -32,12 +32,11 @@ export class AddTaskComponent implements OnInit {
       data=>this.getAccount(data),
       error=>this._router.navigate(['/login'])
     );
-
-    this.createForm();
   }
 
   getAccount(data){
     this.email = data.email;
+    this.createForm();
   }
 
   get f() {
