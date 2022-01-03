@@ -10,10 +10,9 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./task.component.css']
 })
 export class TaskComponent implements OnInit {
-  tasks:any[];
-  allTasks:any[];
-  data:any;
+  data: any;
   email: String;
+  tasks: any[];
   constructor(private _router: Router, private _user: UserService, private taskService: TaskService, private toastr: ToastrService) {
   }
 
@@ -23,18 +22,16 @@ export class TaskComponent implements OnInit {
       data=>this.getAccount(data),
       error=>this._router.navigate(['/login'])
     );
-
-    this.getData();
   }
 
   getAccount(data){
     this.email = data.email;
+    this.getData();
   }
 
   getData() {
     this.taskService.getData().subscribe(res => {
-      this.allTasks = Object.keys(res).map(key => ({type: key, value: res[key]}));
-      this.tasks = this.allTasks.filter(task => task.account == this.email);
+      this.tasks = Object.keys(res).map(index => { let task = res[index]; if (task.account == this.email) { return task; }});
     });
   }
 }

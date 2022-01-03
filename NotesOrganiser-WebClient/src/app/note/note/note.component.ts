@@ -10,10 +10,9 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./note.component.css']
 })
 export class NoteComponent implements OnInit {
-  notes:any[];
-  allNotes:any[];
-  data:any;
+  data: any;
   email: String;
+  notes: any[];
   constructor(private _router: Router, private _user: UserService, private noteService:NoteService, private toastr: ToastrService) {
   }
 
@@ -23,18 +22,16 @@ export class NoteComponent implements OnInit {
       data=>this.getAccount(data),
       error=>this._router.navigate(['/login'])
     );
-
-    this.getData();
   }
 
   getAccount(data){
     this.email = data.email;
+    this.getData();
   }
 
   getData() {
     this.noteService.getData().subscribe(res => {
-      this.allNotes = Object.keys(res).map(key => ({type: key, value: res[key]}));
-      this.notes = this.allNotes.filter(note => note.account == this.email);
+      this.notes = Object.keys(res).map(index => { let note = res[index]; if (note.account == this.email) { return note; }});
     });
   }
 }
