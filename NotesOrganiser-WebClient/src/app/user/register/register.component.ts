@@ -18,9 +18,7 @@ export class RegisterComponent implements OnInit {
     password1: new FormControl(null, Validators.required),
     password2: new FormControl(null, Validators.required)
   })
-  private _user: any;
-
-  constructor(private _router: Router, _user: UserService, private toastr: ToastrService) { }
+  constructor(private _router: Router, private _user: UserService, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this._user.getUser()
