@@ -18,10 +18,15 @@ export class RegisterComponent implements OnInit {
     password1: new FormControl(null, Validators.required),
     password2: new FormControl(null, Validators.required)
   })
+  private _user: any;
 
-  constructor(private _router: Router, private _userService: UserService, private toastr: ToastrService) { }
+  constructor(private _router: Router, _user: UserService, private toastr: ToastrService) { }
 
   ngOnInit(): void {
+    this._user.getUser()
+    .subscribe(
+      data=>this._router.navigate(['/settings'])
+    );
   }
 
   register(){
@@ -30,7 +35,7 @@ export class RegisterComponent implements OnInit {
       return;
     }
 
-    this._userService.insertData(JSON.stringify(this.registerForm.value)).subscribe(res => {
+    this._user.insertData(JSON.stringify(this.registerForm.value)).subscribe(res => {
       this.data = res;
 
       if (this.data.code == 201) {
