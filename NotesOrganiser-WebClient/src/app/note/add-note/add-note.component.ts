@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router} from '@angular/router';
+import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
 import { NoteService } from 'src/app/services/note.service';
 import { ToastrService } from 'ngx-toastr';
@@ -50,8 +50,6 @@ export class AddNoteComponent implements OnInit {
     if(this.addNoteForm.invalid) {
         return;
       }
-
-      console.log(this.addNoteForm.value);
 
     this.noteService.insertData(this.addNoteForm.value).subscribe(res => {
       this.data = res;
