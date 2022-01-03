@@ -1,5 +1,5 @@
 <div class="container-fluid">
-  <form (ngSubmit)="insertData()" [formGroup]="form">
+  <form (ngSubmit)="insertData()" [formGroup]="addTaskForm">
     <div class="form-group">
       <br><input type="text" formControlName="name" [ngClass]="{ 'is-invalid': submitted && f.name.errors }" class="form-control" placeholder="Enter Name">
 

@@ -12,21 +12,23 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class AddNoteComponent implements OnInit {
   data: any;
-  form: FormGroup;
+  addNoteForm: FormGroup;
   submitted=false;
   email: String;
   constructor(private _router: Router, private _user: UserService, private noteService: NoteService, private formBuilder: FormBuilder, private toastr: ToastrService) {
   }
 
   createForm() {
-    this.form = this.formBuilder.group({
-      account: this.email,
+    this.addNoteForm = this.formBuilder.group({
+      account: '',
       name: ['', Validators.required],
       content: ['', Validators.required]
     });
   }
 
   ngOnInit(): void {
+    this.createForm();
+
     this._user.getUser()
     .subscribe(
       data=>this.getAccount(data),
@@ -36,22 +38,22 @@ export class AddNoteComponent implements OnInit {
 
   getAccount(data){
     this.email = data.email;
-    this.createForm();
+    this.addNoteForm.controls['account'].setValue(this.email);
   }
 
   get f() {
-    return this.form.controls;
+    return this.addNoteForm.controls;
   }
   insertData() {
     this.submitted=true;
 
-    if(this.form.invalid) {
+    if(this.addNoteForm.invalid) {
         return;
       }
 
-      console.log(this.form.value);
+      console.log(this.addNoteForm.value);
 
-    this.noteService.insertData(this.form.value).subscribe(res => {
+    this.noteService.insertData(this.addNoteForm.value).subscribe(res => {
       this.data = res;
       this.toastr.success(JSON.stringify(this.data.code), JSON.stringify(this.data.message), {
         timeOut: 1500,
