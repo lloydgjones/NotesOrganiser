@@ -1,4 +1,4 @@
-import { NgModule, Component } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@Angular/platform-browser/animations';
@@ -9,29 +9,51 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { QuillModule } from 'ngx-quill'
 
 import { AppComponent } from './app.component';
-import { NavbarComponent } from './navbar/navbar/navbar.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 import { HttpClientModule } from '@angular/common/http';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { NoteComponent } from './note/note/note.component';
-import { AddNoteComponent } from './note/add-note/add-note.component';
-import { EditNoteComponent } from './note/edit-note/edit-note.component'
+import { NoteComponent } from './components/note/note/note.component';
+import { AddNoteComponent } from './components/note/add-note/add-note.component';
+import { EditNoteComponent } from './components/note/edit-note/edit-note.component';
 
-import { TaskComponent } from './task/task/task.component';
-import { AddTaskComponent } from './task/add-task/add-task.component';
-import { EditTaskComponent } from './task/edit-task/edit-task.component';
-import { LoginComponent } from './user/login/login.component';
-import { RegisterComponent } from './user/register/register.component'
+import { TaskComponent } from './components/task/task/task.component';
+import { AddTaskComponent } from './components/task/add-task/add-task.component';
+import { EditTaskComponent } from './components/task/edit-task/edit-task.component';
 
-import { UserService } from './services/user.service';
-import { SettingsComponent } from './user/settings/settings.component';
+import { LoginComponent } from './components/user/login/login.component';
+import { RegisterComponent } from './components/user/register/register.component';
+import { SettingsComponent } from './components/user/settings/settings.component';
 
-const appRoutes:Routes = [
+import { UserService } from './services/user/user.service';
+
+const noteRoutes:Routes = [
   {
-    path: '', redirectTo:'settings', pathMatch:'full'
+    path: 'tasks', component:TaskComponent
   },
+  {
+    path: 'add-task', component:AddTaskComponent
+  },
+  {
+    path: 'task/edit/:id', component:EditTaskComponent
+  }
+];
+
+const taskRoutes:Routes = [
+  {
+    path: 'tasks', component:TaskComponent
+  },
+  {
+    path: 'add-task', component:AddTaskComponent
+  },
+  {
+    path: 'task/edit/:id', component:EditTaskComponent
+  }
+];
+
+const userRoutes:Routes = [
   {
     path: 'login', component:LoginComponent
   },
@@ -40,24 +62,6 @@ const appRoutes:Routes = [
   },
   {
     path: 'settings', component:SettingsComponent
-  },
-  {
-    path: 'notes', component:NoteComponent
-  },
-  {
-    path: 'tasks', component:TaskComponent
-  },
-  {
-    path: 'add-note', component:AddNoteComponent
-  },
-  {
-    path: 'add-task', component:AddTaskComponent
-  },
-  {
-    path: 'note/edit/:id', component:EditNoteComponent
-  },
-  {
-    path: 'task/edit/:id', component:EditTaskComponent
   }
 ];
 
@@ -66,10 +70,10 @@ const appRoutes:Routes = [
     AppComponent,
     NavbarComponent,
     NoteComponent,
-    TaskComponent,
     AddNoteComponent,
-    AddTaskComponent,
     EditNoteComponent,
+    TaskComponent,
+    AddTaskComponent,
     EditTaskComponent,
     LoginComponent,
     RegisterComponent,
@@ -82,7 +86,9 @@ const appRoutes:Routes = [
     ReactiveFormsModule,
     ToastrModule.forRoot(),
     BrowserAnimationsModule,
-    RouterModule.forRoot(appRoutes),
+    RouterModule.forRoot(noteRoutes),
+    RouterModule.forRoot(taskRoutes),
+    RouterModule.forRoot(userRoutes),
     QuillModule.forRoot({
       customOptions: [{
         import: 'formats/font',
