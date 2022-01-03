@@ -40,6 +40,8 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // Routes
-app.use('/', require('./routes/index'))
+app.use('/', require('./routes/notes'));
+app.use('/', require('./routes/tasks'));
+app.use('/', require('./routes/users'));
 
 app.listen(8080);

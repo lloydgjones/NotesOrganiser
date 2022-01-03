@@ -16,12 +16,6 @@ export class UserService {
     });
   }
 
-  /*
-  insertData(data) {
-    return this.httpClient.post(environment.apiUrl+'/user/register', data);
-  }
-  */
-
   login(body:any){
     return this.httpClient.post(environment.apiUrl+'/user/login', body,{
       observe: 'body',

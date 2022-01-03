@@ -30,6 +30,10 @@ export class RegisterComponent implements OnInit {
   register(){
     if(!this.registerForm.valid || (this.registerForm.controls.password1.value != this.registerForm.controls.password2.value)){
       console.log('Invalid Form');
+      this.toastr.error(JSON.stringify(400), JSON.stringify("Invalid Form"), {
+        timeOut: 1500,
+        progressBar: true
+      });
       return;
     }
 
