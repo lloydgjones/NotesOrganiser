@@ -31,13 +31,13 @@ import { UserService } from './services/user/user.service';
 
 const noteRoutes:Routes = [
   {
-    path: 'tasks', component:TaskComponent
+    path: 'notes', component:NoteComponent
   },
   {
-    path: 'add-task', component:AddTaskComponent
+    path: 'add-note', component:AddNoteComponent
   },
   {
-    path: 'task/edit/:id', component:EditTaskComponent
+    path: 'note/edit/:id', component:EditNoteComponent
   }
 ];
 
@@ -54,6 +54,9 @@ const taskRoutes:Routes = [
 ];
 
 const userRoutes:Routes = [
+  {
+    path: '', redirectTo:'settings', pathMatch:'full'
+  },
   {
     path: 'login', component:LoginComponent
   },
