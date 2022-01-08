@@ -29,10 +29,9 @@ export class AddNoteComponent implements OnInit {
   ngOnInit(): void {
     this.createForm();
 
-    this._user.getUser()
-    .subscribe(
-      data=>this.getAccount(data),
-      error=>this._router.navigate(['/login'])
+    this._user.getUser().subscribe(
+      res=>this.getAccount(res),
+      err=>this._router.navigate(['/login'])
     );
   }
 
@@ -51,14 +50,17 @@ export class AddNoteComponent implements OnInit {
         return;
       }
 
-    this.noteService.insertData(this.addNoteForm.value).subscribe(res => {
-      this.data = res;
-      this.toastr.success(JSON.stringify(this.data.code), JSON.stringify(this.data.message), {
-        timeOut: 2000,
-        progressBar: true,
-        positionClass: "toast-bottom-right"
-      });
-      this._router.navigateByUrl('/notes');
-    });
+    this.noteService.insertData(this.addNoteForm.value).subscribe(
+      res => {
+        this.data = res;
+        this.toastr.success(JSON.stringify(this.data.message), "Success", {
+          timeOut: 2000,
+          progressBar: true,
+          positionClass: "toast-bottom-right"
+        });
+
+        this._router.navigateByUrl('/notes');
+       }
+    );
   }
 }

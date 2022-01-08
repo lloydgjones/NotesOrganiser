@@ -30,38 +30,44 @@ export class EditTaskComponent implements OnInit {
   }
 
   getTaskData(){
-    this.taskService.getDataById(this.id).subscribe(res => {
-      this.data = res;
-      this.task = this.data;
-      this.form = new FormGroup({
-        name: new FormControl(this.task.name),
-        content: new FormControl(this.task.content),
-        weight: new FormControl(this.task.weight)
-      })
-    })
+    this.taskService.getDataById(this.id).subscribe(
+      res => {
+        this.data = res;
+        this.task = this.data;
+        this.form = new FormGroup({
+          name: new FormControl(this.task.name),
+          content: new FormControl(this.task.content),
+          weight: new FormControl(this.task.weight)
+        });
+      }
+    );
   }
 
   editData() {
-    this.taskService.editData(this.id, this.form.value).subscribe(res => {
-      this.data = res;
-      this.toastr.success(JSON.stringify(this.data.code), JSON.stringify(this.data.message), {
-        timeOut: 2000,
-        progressBar: true,
-        positionClass: "toast-bottom-right"
-      });
-    });
+    this.taskService.editData(this.id, this.form.value).subscribe(
+      res => {
+        this.data = res;
+        this.toastr.success(JSON.stringify(this.data.message), "Success", {
+          timeOut: 2000,
+          progressBar: true,
+          positionClass: "toast-bottom-right"
+        });
+      }
+    );
   }
 
   deleteData(id) {
-    this.taskService.deleteData(id).subscribe(res => {
-      this.data = res;
-      this.toastr.error(JSON.stringify(this.data.code), JSON.stringify(this.data.message), {
-        timeOut: 2000,
-        progressBar: true,
-        positionClass: "toast-bottom-right"
-      });
-      this.getTaskData();
-      this.router.navigateByUrl('/tasks');
-    });
+    this.taskService.deleteData(id).subscribe(
+      res => {
+        this.data = res;
+        this.toastr.error(JSON.stringify(this.data.message), "Success", {
+          timeOut: 2000,
+          progressBar: true,
+          positionClass: "toast-bottom-right"
+        });
+        this.getTaskData();
+        this.router.navigateByUrl('/tasks');
+      }
+    );
   }
 }

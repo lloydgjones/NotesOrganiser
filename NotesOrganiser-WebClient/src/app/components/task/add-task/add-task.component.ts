@@ -52,14 +52,16 @@ export class AddTaskComponent implements OnInit {
         return;
       }
 
-    this.taskService.insertData(this.addTaskForm.value).subscribe(res => {
-      this.data = res;
-      this.toastr.success(JSON.stringify(this.data.code), JSON.stringify(this.data.message), {
-        timeOut: 2000,
-        progressBar: true,
-        positionClass: "toast-bottom-right"
-      });
-      this._router.navigateByUrl('/tasks');
-    });
+    this.taskService.insertData(this.addTaskForm.value).subscribe(
+      res => {
+        this.data = res;
+        this.toastr.success(JSON.stringify(this.data.message), "Success", {
+          timeOut: 2000,
+          progressBar: true,
+          positionClass: "toast-bottom-right"
+        });
+        this._router.navigateByUrl('/tasks');
+      }
+    );
   }
 }

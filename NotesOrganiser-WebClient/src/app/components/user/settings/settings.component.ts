@@ -27,15 +27,17 @@ export class SettingsComponent implements OnInit {
   }
 
   logout(){
-    this._user.logout().subscribe(res => {
-      this.data = res;
-      this.toastr.success(JSON.stringify(this.data.code), JSON.stringify(this.data.message), {
-        timeOut: 1500,
-        progressBar: true,
-        positionClass: "toast-bottom-right"
-      });
+    this._user.logout().subscribe(
+      res => {
+        this.data = res;
+        this.toastr.success(JSON.stringify(this.data.message), "Success", {
+          timeOut: 1500,
+          progressBar: true,
+          positionClass: "toast-bottom-right"
+        });
 
-      this._router.navigate(['/login']);},
+        this._router.navigate(['/login']);
+      }
     );
   }
 }

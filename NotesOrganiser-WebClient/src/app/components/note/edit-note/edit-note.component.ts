@@ -29,37 +29,43 @@ export class EditNoteComponent implements OnInit {
   }
 
   getNoteData(){
-    this.noteService.getDataById(this.id).subscribe(res => {
-      this.data = res;
-      this.note = this.data;
-      this.form = new FormGroup({
-        name: new FormControl(this.note.name),
-        content: new FormControl(this.note.content)
-      })
+    this.noteService.getDataById(this.id).subscribe(
+      res => {
+        this.data = res;
+        this.note = this.data;
+        this.form = new FormGroup({
+          name: new FormControl(this.note.name),
+          content: new FormControl(this.note.content)
+        }
+      );
     })
   }
 
   editData() {
-    this.noteService.editData(this.id, this.form.value).subscribe(res => {
-      this.data = res;
-      this.toastr.success(JSON.stringify(this.data.code), JSON.stringify(this.data.message), {
-        timeOut: 2000,
-        progressBar: true,
-        positionClass: "toast-bottom-right"
-      });
-    });
+    this.noteService.editData(this.id, this.form.value).subscribe(
+      res => {
+        this.data = res;
+        this.toastr.success(JSON.stringify(this.data.message), "Success", {
+          timeOut: 2000,
+          progressBar: true,
+          positionClass: "toast-bottom-right"
+        });
+      }
+    );
   }
 
   deleteData(id) {
-    this.noteService.deleteData(id).subscribe(res => {
-      this.data = res;
-      this.toastr.error(JSON.stringify(this.data.code), JSON.stringify(this.data.message), {
-        timeOut: 2000,
-        progressBar: true,
-        positionClass: "toast-bottom-right"
-      });
-      this.getNoteData();
-      this.router.navigateByUrl('/notes');
-    });
+    this.noteService.deleteData(id).subscribe(
+      res => {
+        this.data = res;
+        this.toastr.error(JSON.stringify(this.data.message), "Error", {
+          timeOut: 2000,
+          progressBar: true,
+          positionClass: "toast-bottom-right"
+        });
+
+        this.router.navigateByUrl('/notes');
+      }
+    );
   }
 }

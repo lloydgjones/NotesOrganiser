@@ -30,9 +30,11 @@ export class TaskComponent implements OnInit {
   }
 
   getData() {
-    this.taskService.getData().subscribe(res => {
-      this.tasks = Object.keys(res).map(index => { let task = res[index]; return task; });
-      this.tasks = this.tasks.filter(task => task.account == this.email);
-    });
+    this.taskService.getData().subscribe(
+      res => {
+        this.tasks = Object.keys(res).map(index => { let task = res[index]; return task; });
+        this.tasks = this.tasks.filter(task => task.account == this.email);
+      }
+    );
   }
 }

@@ -30,9 +30,11 @@ export class NoteComponent implements OnInit {
   }
 
   getData() {
-    this.noteService.getData().subscribe(res => {
-      this.notes = Object.keys(res).map(index => { let note = res[index]; return note; });
-      this.notes = this.notes.filter(note => note.account == this.email);
-    });
+    this.noteService.getData().subscribe(
+      res => {
+        this.notes = Object.keys(res).map(index => { let note = res[index]; return note; });
+        this.notes = this.notes.filter(note => note.account == this.email);
+      }
+    );
   }
 }

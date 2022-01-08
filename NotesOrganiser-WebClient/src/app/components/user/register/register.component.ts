@@ -29,8 +29,7 @@ export class RegisterComponent implements OnInit {
 
   register(){
     if(!this.registerForm.valid || (this.registerForm.controls.password1.value != this.registerForm.controls.password2.value)){
-      console.log('Invalid Form');
-      this.toastr.error(JSON.stringify(400), JSON.stringify("Invalid Form"), {
+      this.toastr.error("Invalid Form", "Error", {
         timeOut: 2000,
         progressBar: true,
         positionClass: "toast-bottom-right"
@@ -38,26 +37,25 @@ export class RegisterComponent implements OnInit {
       return;
     }
 
-    this._user.insertData(JSON.stringify(this.registerForm.value)).subscribe(res => {
-      this.data = res;
-
-      if (this.data.code == 201) {
-        this.toastr.success(JSON.stringify(this.data.code), JSON.stringify(this.data.message), {
+    this._user.insertData(JSON.stringify(this.registerForm.value)).subscribe(
+      res => {
+        this.data = res;
+        this.toastr.success(this.data.message, "Success", {
           timeOut: 2000,
           progressBar: true,
           positionClass: "toast-bottom-right"
         });
 
         this._router.navigate(['/login']);
-      }
-
-      else {
-        this.toastr.error(JSON.stringify(this.data.code), JSON.stringify(this.data.message), {
+      },
+      err => {
+        this.data = err;
+        this.toastr.error(JSON.stringify(this.data.message), "Error", {
           timeOut: 2000,
           progressBar: true,
           positionClass: "toast-bottom-right"
         });
-      }},
+      }
     );
   }
 }
