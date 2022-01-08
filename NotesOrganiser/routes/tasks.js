@@ -30,7 +30,8 @@ router.post('/api/task/add', (req, res) => {
     const task = new Task({
         account: req.body.account,
         name: req.body.name,
-        content: req.body.content
+        content: req.body.content,
+        weight: req.body.weight
     });
     task.save((err, data) => {
         if(!err) {
@@ -45,7 +46,8 @@ router.post('/api/task/add', (req, res) => {
 router.put('/api/task/update/:id', (req, res) => {
     const task = {
         name: req.body.name,
-        content: req.body.content
+        content: req.body.content,
+        weight: req.body.weight
     };
     Task.findByIdAndUpdate(req.params.id, { $set:task }, { new:true }, (err, data) => {
         if(!err) {

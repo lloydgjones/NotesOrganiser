@@ -22,7 +22,8 @@ export class AddTaskComponent implements OnInit {
     this.addTaskForm = this.formBuilder.group({
       account: '',
       name: ['', Validators.required],
-      content: ['', Validators.required]
+      content: ['', Validators.required],
+      weight: ['']
     });
   }
 

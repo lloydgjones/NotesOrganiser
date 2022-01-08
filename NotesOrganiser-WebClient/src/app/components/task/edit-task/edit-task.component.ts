@@ -19,7 +19,8 @@ export class EditTaskComponent implements OnInit {
 
   form = new FormGroup({
     name: new FormControl(''),
-    content: new FormControl('')
+    content: new FormControl(''),
+    weight: new FormControl('')
   })
 
   ngOnInit(): void {
@@ -34,7 +35,8 @@ export class EditTaskComponent implements OnInit {
       this.task = this.data;
       this.form = new FormGroup({
         name: new FormControl(this.task.name),
-        content: new FormControl(this.task.content)
+        content: new FormControl(this.task.content),
+        weight: new FormControl(this.task.weight)
       })
     })
   }

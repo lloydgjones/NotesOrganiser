@@ -6,7 +6,7 @@ const passport = require('passport');
 var User = require('../models/user');
 
 // Save New User
-router.post('/api/user/register', function (req, res, next) {
+router.post('/api/user/register', function (req, res) {
     addToDB(req, res);
 });
 
@@ -17,7 +17,7 @@ async function addToDB(req, res) {
         password: User.hashPassword(req.body.password1),
         creation_dt: Date.now()
     });
-  
+
     try {
         doc = await user.save();
         return res.status(201).json(doc);
@@ -40,7 +40,7 @@ router.post('/api/user/login', function (req, res, next) {
 });
 
 // Get User
-router.get('/api/user', isValidUser, function (req, res, next) {
+router.get('/api/user', isValidUser, function (req, res) {
     return res.status(200).json(req.user);
 });
 
@@ -50,7 +50,7 @@ function isValidUser(req, res, next){
 }
 
 // Logout
-router.get('/api/user/logout', isValidUser, function (req, res, next) {
+router.get('/api/user/logout', isValidUser, function (req, res) {
     req.logout();
     return res.status(200).json({message:'Logout Success'});
 });

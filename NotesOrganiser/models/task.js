@@ -13,6 +13,10 @@ const Task = mongoose.model('Task', {
     content: {
         type: String,
         required: true
+    },
+    weight: {
+        type: Number,
+        required: false
     }
 });
 

@@ -2,7 +2,8 @@
   <div class="table">
     <thead>
       <tr>
-        <th scope="col" class="wide">Name</th>
+        <th scope="col">Name</th>
+        <th scope="col">Weight</th>
         <th scope="col"></th>
       </tr>
     </thead>
@@ -10,6 +11,7 @@
     <tbody>
       <tr *ngFor="let task of tasks">
         <td>{{task.name}}</td>
+        <td>{{task.weight}}</td>
         <td>
           <button class="btn btn-primary btn-sm mx-auto" routerLink="/task/edit/{{task._id}}">Edit</button>
         </td>
