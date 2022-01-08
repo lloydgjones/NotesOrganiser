@@ -31,8 +31,9 @@ export class RegisterComponent implements OnInit {
     if(!this.registerForm.valid || (this.registerForm.controls.password1.value != this.registerForm.controls.password2.value)){
       console.log('Invalid Form');
       this.toastr.error(JSON.stringify(400), JSON.stringify("Invalid Form"), {
-        timeOut: 1500,
-        progressBar: true
+        timeOut: 2000,
+        progressBar: true,
+        positionClass: "toast-bottom-right"
       });
       return;
     }
@@ -42,8 +43,9 @@ export class RegisterComponent implements OnInit {
 
       if (this.data.code == 201) {
         this.toastr.success(JSON.stringify(this.data.code), JSON.stringify(this.data.message), {
-          timeOut: 1500,
-          progressBar: true
+          timeOut: 2000,
+          progressBar: true,
+          positionClass: "toast-bottom-right"
         });
 
         this._router.navigate(['/login']);
@@ -51,8 +53,9 @@ export class RegisterComponent implements OnInit {
 
       else {
         this.toastr.error(JSON.stringify(this.data.code), JSON.stringify(this.data.message), {
-          timeOut: 1500,
-          progressBar: true
+          timeOut: 2000,
+          progressBar: true,
+          positionClass: "toast-bottom-right"
         });
       }},
     );

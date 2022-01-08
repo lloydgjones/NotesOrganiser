@@ -37,8 +37,9 @@ export class LoginComponent implements OnInit {
     this._user.login(JSON.stringify(this.loginForm.value)).subscribe(res => {
         this.data = res;
         this.toastr.success(JSON.stringify(this.data.code), JSON.stringify(this.data.message), {
-          timeOut: 1500,
-          progressBar: true
+          timeOut: 2000,
+          progressBar: true,
+          positionClass: "toast-bottom-right"
         });
 
       this._router.navigate(['/settings']);},

@@ -55,8 +55,9 @@ export class AddTaskComponent implements OnInit {
     this.taskService.insertData(this.addTaskForm.value).subscribe(res => {
       this.data = res;
       this.toastr.success(JSON.stringify(this.data.code), JSON.stringify(this.data.message), {
-        timeOut: 1500,
-        progressBar: true
+        timeOut: 2000,
+        progressBar: true,
+        positionClass: "toast-bottom-right"
       });
       this._router.navigateByUrl('/tasks');
     });

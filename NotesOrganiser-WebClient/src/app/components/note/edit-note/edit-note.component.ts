@@ -43,8 +43,9 @@ export class EditNoteComponent implements OnInit {
     this.noteService.editData(this.id, this.form.value).subscribe(res => {
       this.data = res;
       this.toastr.success(JSON.stringify(this.data.code), JSON.stringify(this.data.message), {
-        timeOut: 1500,
-        progressBar: true
+        timeOut: 2000,
+        progressBar: true,
+        positionClass: "toast-bottom-right"
       });
     });
   }
@@ -53,8 +54,9 @@ export class EditNoteComponent implements OnInit {
     this.noteService.deleteData(id).subscribe(res => {
       this.data = res;
       this.toastr.error(JSON.stringify(this.data.code), JSON.stringify(this.data.message), {
-        timeOut: 1500,
-        progressBar: true
+        timeOut: 2000,
+        progressBar: true,
+        positionClass: "toast-bottom-right"
       });
       this.getNoteData();
       this.router.navigateByUrl('/notes');
