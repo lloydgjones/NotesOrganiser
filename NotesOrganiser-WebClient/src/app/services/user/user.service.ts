@@ -9,7 +9,7 @@ export class UserService {
 
   constructor(private httpClient: HttpClient) { }
 
-  insertData(body:any){
+  register(body:any){
     return this.httpClient.post(environment.apiUrl+'/user/register', body,{
       observe: 'body',
       headers: new HttpHeaders().append('Content-Type','application/json')

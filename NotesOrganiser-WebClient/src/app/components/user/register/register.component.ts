@@ -37,7 +37,7 @@ export class RegisterComponent implements OnInit {
       return;
     }
 
-    this._user.insertData(JSON.stringify(this.registerForm.value)).subscribe(
+    this._user.register(JSON.stringify(this.registerForm.value)).subscribe(
       res => {
         this.data = res;
         this.toastr.success(this.data.message, "Success", {
