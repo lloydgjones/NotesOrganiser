@@ -24,10 +24,6 @@ export class LoginComponent implements OnInit {
     );
   }
 
-  moveToRegister(){
-    this._router.navigate(['/register']);
-  }
-
   login(){
     if(!this.loginForm.valid){
       console.log('Invalid Form');

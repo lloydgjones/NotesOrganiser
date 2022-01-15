@@ -34,7 +34,7 @@ const noteRoutes:Routes = [
     path: 'notes', component:NoteComponent
   },
   {
-    path: 'add-note', component:AddNoteComponent
+    path: 'notes/add-note', component:AddNoteComponent
   },
   {
     path: 'note/edit/:id', component:EditNoteComponent
@@ -46,7 +46,7 @@ const taskRoutes:Routes = [
     path: 'tasks', component:TaskComponent
   },
   {
-    path: 'add-task', component:AddTaskComponent
+    path: 'tasks/add-task', component:AddTaskComponent
   },
   {
     path: 'task/edit/:id', component:EditTaskComponent
