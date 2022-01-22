@@ -7,6 +7,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 import { QuillModule } from 'ngx-quill'
+import { FullCalendarModule } from '@fullcalendar/angular';
+import dayGridPlugin from '@fullcalendar/daygrid';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -26,6 +28,8 @@ import { EditTaskComponent } from './components/task/edit-task/edit-task.compone
 import { LoginComponent } from './components/user/login/login.component';
 import { RegisterComponent } from './components/user/register/register.component';
 import { SettingsComponent } from './components/user/settings/settings.component';
+
+import { CalendarComponent } from './components/calendar/calendar.component';
 
 import { UserService } from './services/user/user.service';
 
@@ -68,6 +72,16 @@ const userRoutes:Routes = [
   }
 ];
 
+const calendarRoutes:Routes = [
+  {
+    path: 'calendar', component:CalendarComponent
+  }
+];
+
+FullCalendarModule.registerPlugins([
+  dayGridPlugin
+]);
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -80,18 +94,21 @@ const userRoutes:Routes = [
     EditTaskComponent,
     LoginComponent,
     RegisterComponent,
-    SettingsComponent
+    SettingsComponent,
+    CalendarComponent
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
     ToastrModule.forRoot(),
-    BrowserAnimationsModule,
     RouterModule.forRoot(noteRoutes),
     RouterModule.forRoot(taskRoutes),
     RouterModule.forRoot(userRoutes),
+    RouterModule.forRoot(calendarRoutes),
+    FullCalendarModule,
     QuillModule.forRoot({
       customOptions: [{
         import: 'formats/font',
