@@ -22,7 +22,8 @@ export class AddNoteComponent implements OnInit {
     this.addNoteForm = this.formBuilder.group({
       account: '',
       name: ['', Validators.required],
-      content: ['', Validators.required]
+      content: ['', Validators.required],
+      time: ['']
     });
   }
 

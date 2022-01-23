@@ -14,6 +14,10 @@ const Task = mongoose.model('Task', {
         type: String,
         required: true
     },
+    time: {
+        type: Date,
+        required: false
+    },
     weight: {
         type: Number,
         required: false

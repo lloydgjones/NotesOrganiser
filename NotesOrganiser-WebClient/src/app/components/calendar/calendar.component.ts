@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { CalendarOptions } from '@fullcalendar/angular';
+import { UserService } from 'src/app/services/user/user.service';
 
 @Component({
   selector: 'app-calendar',
@@ -7,6 +9,8 @@ import { CalendarOptions } from '@fullcalendar/angular';
   styleUrls: ['./calendar.component.css']
 })
 export class CalendarComponent implements OnInit {
+  data: any;
+  email: String;
 
   calendarOptions: CalendarOptions = {
     initialView: 'dayGridMonth',
@@ -16,9 +20,17 @@ export class CalendarComponent implements OnInit {
     }
   };
 
-  constructor() { }
+  constructor(private _router: Router, private _user: UserService) { }
 
   ngOnInit(): void {
+    this._user.getUser()
+    .subscribe(
+      data=>this.getAccount(data),
+      error=>this._router.navigate(['/login'])
+    );
   }
 
+  getAccount(data){
+    this.email = data.email;
+  }
 }

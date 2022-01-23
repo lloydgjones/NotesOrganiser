@@ -13,6 +13,10 @@ const Note = mongoose.model('Note', {
     content: {
         type: String,
         required: true
+    },
+    time: {
+        type: Date,
+        required: false
     }
 });
 

@@ -23,6 +23,7 @@ export class AddTaskComponent implements OnInit {
       account: '',
       name: ['', Validators.required],
       content: ['', Validators.required],
+      time: [''],
       weight: ['']
     });
   }
