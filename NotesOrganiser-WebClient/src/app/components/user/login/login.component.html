@@ -1,20 +1,20 @@
-<div class="container-fluid">
-  <div class="col-sm-6 mx-auto">
+<div>
+  <div>
     <form [formGroup]="loginForm">
       <br><div class="form-group">
         <label for="inputEmail">Email</label>
         <input formControlName="email" type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp" placeholder="Enter Email">
-        <small id="emailHelp" class="form-text text-muted"></small>
+        <small id="emailHelp" class="form-text"></small>
       </div>
       <br><div class="form-group">
         <label for="inputPassword">Password</label>
         <input formControlName="password" type="password" class="form-control" id="inputPassword" aria-describedby="passwordHelp" placeholder="Enter Password">
-        <small id="passwordHelp" class="form-text text-muted"></small>
+        <small id="passwordHelp" class="form-text"></small>
       </div>
       <br>
-      <div class="form-group" style="text-align:center;">
-          <button type="button" class="btn btn-space btn-sm btn-dark" (click)="login()">Log In</button>
-          <button type="button" class="btn btn-space btn-sm btn-secondary" routerLink="/register">Register</button>
+      <div class="form-group">
+          <button type="button" (click)="login()">Log In</button>
+          <button type="button" routerLink="/register">Register</button>
       </div>
     </form>
   </div>

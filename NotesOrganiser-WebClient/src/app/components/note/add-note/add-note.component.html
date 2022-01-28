@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div>
   <form (ngSubmit)="insertData()" [formGroup]="addNoteForm">
     <div class="form-group">
       <br><input type="text" formControlName="name" [ngClass]="{ 'is-invalid': submitted && f.name.errors }" class="form-control" placeholder="Enter Name">
@@ -16,14 +16,10 @@
       </div>
     </div>
 
-    <!--<div class="form-group">
-      DATE PICKER GOES HERE
-    </div>-->
-
     <br>
 
     <div class="form-group">
-      <button class="btn btn-space btn-sm btn-dark">Save</button>
+      <button>Save</button>
     </div>
   </form>
 </div>

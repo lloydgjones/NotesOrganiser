@@ -1,9 +1,8 @@
-<div class="container-fluid">
-  <button class="btn btn-primary btn-sm mx-auto" routerLink="/tasks/add-task">Add New Task</button>
-  <table class="table">
+<div>
+  <table>
     <thead>
       <tr>
-        <th scope="col" class="">Name</th>
+        <th scope="col">Name</th>
         <th scope="col">Weight</th>
         <th scope="col"></th>
       </tr>
@@ -14,9 +13,11 @@
         <td>{{task.name}}</td>
         <td>{{task.weight}}</td>
         <td>
-          <button class="btn btn-primary btn-sm mx-auto" routerLink="/task/edit/{{task._id}}">Edit</button>
+          <button routerLink="/task/edit/{{task._id}}">Edit</button>
         </td>
       </tr>
     </tbody>
   </table>
+  <br>
+  <button routerLink="/tasks/add-task">Add New Task</button>
 </div>
