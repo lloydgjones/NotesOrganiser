@@ -17,7 +17,7 @@ export class EditTaskComponent implements OnInit {
   data:any;
   constructor(private taskService: TaskService, private route: ActivatedRoute, private toastr: ToastrService, private router: Router) { }
 
-  form = new FormGroup({
+  editTaskForm = new FormGroup({
     name: new FormControl(''),
     content: new FormControl(''),
     weight: new FormControl('')
@@ -34,7 +34,7 @@ export class EditTaskComponent implements OnInit {
       res => {
         this.data = res;
         this.task = this.data;
-        this.form = new FormGroup({
+        this.editTaskForm = new FormGroup({
           name: new FormControl(this.task.name),
           content: new FormControl(this.task.content),
           weight: new FormControl(this.task.weight)
@@ -44,7 +44,7 @@ export class EditTaskComponent implements OnInit {
   }
 
   editData() {
-    this.taskService.editData(this.id, this.form.value).subscribe(
+    this.taskService.editData(this.id, this.editTaskForm.value).subscribe(
       res => {
         this.data = res;
         this.toastr.success(JSON.stringify(this.data.message), "Success", {

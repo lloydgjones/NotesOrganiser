@@ -1,18 +1,16 @@
-<div>
-  <form (ngSubmit)="editData()" [formGroup]="form">
+<div class="mx-2 my-2">
+  <form (ngSubmit)="editData()" [formGroup]="editNoteForm">
     <div>
-      <br><input type="text" formControlName="name" placeholder="Enter Name">
+      <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none mb-4" type="text" formControlName="name" placeholder="Enter Name">
     </div>
 
     <div>
-      <br><quill-editor type="text" formControlName="content" placeholder="Enter Note Text"></quill-editor>
+      <quill-editor type="text" formControlName="content" placeholder="Enter Note Text"></quill-editor>
     </div>
 
-    <br>
-
     <div>
-      <button >Save</button>
-      <button type="button" (click)="deleteData(note._id)">Delete</button>
+      <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mx-2 mt-4 rounded focus:outline-none focus:shadow-outline">Save</button>
+      <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 mx-2 mt-4 rounded focus:outline-none focus:shadow-outline"type="button" (click)="deleteData(note._id)">Delete</button>
     </div>
   </form>
 </div>

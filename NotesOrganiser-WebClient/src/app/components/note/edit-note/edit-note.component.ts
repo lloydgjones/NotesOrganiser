@@ -17,7 +17,7 @@ export class EditNoteComponent implements OnInit {
   data:any;
   constructor(private noteService: NoteService, private route: ActivatedRoute, private toastr: ToastrService, private router: Router) { }
 
-  form = new FormGroup({
+  editNoteForm = new FormGroup({
     name: new FormControl(''),
     content: new FormControl('')
   })
@@ -33,7 +33,7 @@ export class EditNoteComponent implements OnInit {
       res => {
         this.data = res;
         this.note = this.data;
-        this.form = new FormGroup({
+        this.editNoteForm = new FormGroup({
           name: new FormControl(this.note.name),
           content: new FormControl(this.note.content)
         }
@@ -42,7 +42,7 @@ export class EditNoteComponent implements OnInit {
   }
 
   editData() {
-    this.noteService.editData(this.id, this.form.value).subscribe(
+    this.noteService.editData(this.id, this.editNoteForm.value).subscribe(
       res => {
         this.data = res;
         this.toastr.success(JSON.stringify(this.data.message), "Success", {
