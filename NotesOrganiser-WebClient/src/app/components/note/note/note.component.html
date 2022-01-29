@@ -1,21 +1,20 @@
-<div>
-  <table>
+<div class="mx-2 my-2">
+  <table class="border-collapse border border-slate-500 bg-slate-200">
     <thead>
-      <tr>
-        <th scope="col">Name</th>
-        <th scope="col"></th>
+      <tr class="bg-slate-300">
+        <th class="px-4 py-1 border border-slate-500" scope="col">Name</th>
+        <th class="px-4 py-1 border border-slate-500" scope="col"></th>
       </tr>
     </thead>
 
     <tbody>
       <tr *ngFor="let note of notes">
-        <td>{{note.name}}</td>
-        <td>
-          <button routerLink="/note/edit/{{note._id}}">Edit</button>
+        <td class="px-4 py-1 border border-slate-500">{{note.name}}</td>
+        <td class="px-4 py-1 border border-slate-500">
+          <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-4 mx-2 rounded focus:outline-none focus:shadow-outline" routerLink="/note/edit/{{note._id}}">Edit</button>
         </td>
       </tr>
     </tbody>
   </table>
-  <br>
-  <button routerLink="/notes/add-note">Add New Note</button>
+  <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mx-2 mt-4 rounded focus:outline-none focus:shadow-outline" routerLink="/notes/add-note">Add New Note</button>
 </div>
