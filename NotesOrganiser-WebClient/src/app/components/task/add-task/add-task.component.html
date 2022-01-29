@@ -1,14 +1,14 @@
 <div>
   <form (ngSubmit)="insertData()" [formGroup]="addTaskForm">
-    <div class="form-group">
-      <br><input type="text" formControlName="name" [ngClass]="{ 'is-invalid': submitted && f.name.errors }" class="form-control" placeholder="Enter Name">
+    <div>
+      <br><input type="text" formControlName="name" [ngClass]="{ 'is-invalid': submitted && f.name.errors }" placeholder="Enter Name">
 
       <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
         <div *ngIf="f.name.errors.required">Name is Required</div>
       </div>
     </div>
 
-    <div class="form-group">
+    <div>
       <br><quill-editor type="text" formControlName="content" [ngClass]="{ 'is-invalid': submitted && f.content.errors }" placeholder="Enter Task Text" [maxLength]="250"></quill-editor>
 
       <div *ngIf="submitted && f.content.errors" class="invalid-feedback">
@@ -16,8 +16,8 @@
       </div>
     </div>
 
-    <div class="form-group" class="col-2">
-      <br><select formControlName="weight" class="form-control">
+    <div class="col-2">
+      <br><select formControlName="weight">
           <option value="" disabled selected>(Optional) Weight</option>
           <option value=1>1</option>
           <option value=2>2</option>
@@ -28,7 +28,7 @@
 
     <br>
 
-    <div class="form-group">
+    <div>
       <button>Save</button>
     </div>
   </form>

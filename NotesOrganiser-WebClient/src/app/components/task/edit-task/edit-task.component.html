@@ -1,15 +1,15 @@
 <div>
   <form (ngSubmit)="editData()" [formGroup]="form">
-    <div class="form-group">
-      <br><input type="text" formControlName="name" class="form-control" placeholder="Enter Name">
+    <div>
+      <br><input type="text" formControlName="name" placeholder="Enter Name">
     </div>
 
-    <div class="form-group">
+    <div>
       <br><quill-editor type="text" formControlName="content" placeholder="Enter Task Text" [maxLength]="250"></quill-editor>
     </div>
 
-    <div class="form-group">
-      <br><select formControlName="weight" class="form-control">
+    <div>
+      <br><select formControlName="weight">
           <option value=1>1</option>
           <option value=2>2</option>
           <option value=3>3</option>
@@ -19,7 +19,7 @@
 
     <br>
 
-    <div class="form-group">
+    <div>
       <button>Save</button>
       <button type="button" (click)="deleteData(task._id)">Delete</button>
     </div>

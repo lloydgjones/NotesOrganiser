@@ -1,31 +1,28 @@
-<div>
-  <div>
-    <form [formGroup]="registerForm">
-      <br><div class="form-group">
-        <label for="inputEmail">Email</label>
-        <input formControlName="email" type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp" placeholder="Enter Email">
-        <small id="emailHelp" class="form-text"></small>
-      </div>
-      <br><div class="form-group">
-          <label for="inputUsername">Username</label>
-          <input formControlName="username" type="text" class="form-control" id="inputUsername" aria-describedby="usernameHelp" placeholder="Enter Username">
-          <small id="usernameHelp" class="form-text"></small>
-      </div>
-      <br><div class="form-group">
-        <label for="inputPassword1">Password</label>
-        <input formControlName="password1" type="password" class="form-control" id="inputPassword1" aria-describedby="password1Help" placeholder="Enter Password">
-        <small id="password1Help" class="form-text"></small>
-      </div>
-      <br><div class="form-group">
-          <label for="inputPassword2">Confirm Password</label>
-          <input formControlName="password2" type="password" class="form-control" id="inputPassword2" aria-describedby="password2Help" placeholder="Repeat Password">
-          <small id="password2Help" class="form-text"></small>
-      </div>
-      <br>
-      <div class="form-group">
-          <button type="button" (click)="register()">Register</button>
-          <button type="button" routerLink="/login">Go To Login</button>
-      </div>
-    </form>
-  </div>
+<div class="w-full max-w-xl mx-auto mt-6">
+  <form class="bg-slate-200 shadow-md rounded px-8 py-6" [formGroup]="registerForm">
+    <div class="mb-4">
+      <label class="block text-gray-700 text-md font-bold mb-2" for="inputEmail">Email</label>
+      <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none" formControlName="email" type="email" id="inputEmail" aria-describedby="emailHelp" placeholder="Enter Email">
+      <small id="emailHelp"></small>
+    </div>
+    <div class="mb-4">
+      <label class="block text-gray-700 text-md font-bold mb-2" for="inputUsername">Username</label>
+      <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none" formControlName="username" type="text" id="inputUsername" aria-describedby="usernameHelp" placeholder="Enter Username">
+      <small id="usernameHelp"></small>
+    </div>
+    <div class="mb-4">
+      <label class="block text-gray-700 text-md font-bold mb-2" for="inputPassword1">Password</label>
+      <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none" formControlName="password1" type="password" id="inputPassword1" aria-describedby="password1Help" placeholder="First Password">
+      <small id="password1Help"></small>
+    </div>
+    <div class="mb-4">
+      <label class="block text-gray-700 text-md font-bold mb-2" for="inputPassword2">Confirm Password</label>
+      <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none" formControlName="password1" type="password" id="inputPassword2" aria-describedby="password2Help" placeholder="Second Password">
+      <small id="password2Help"></small>
+    </div>
+    <div class="flex items-center mt-5">
+        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mx-2 rounded focus:outline-none focus:shadow-outline" type="button" (click)="register()">Register</button>
+        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mx-2 rounded focus:outline-none focus:shadow-outline" type="button" routerLink="/login">Go To Login</button>
+    </div>
+  </form>
 </div>

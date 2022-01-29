@@ -1,16 +1,16 @@
 <div>
   <form (ngSubmit)="editData()" [formGroup]="form">
-    <div class="form-group">
-      <br><input type="text" formControlName="name" class="form-control" placeholder="Enter Name">
+    <div>
+      <br><input type="text" formControlName="name" placeholder="Enter Name">
     </div>
 
-    <div class="form-group">
+    <div>
       <br><quill-editor type="text" formControlName="content" placeholder="Enter Note Text"></quill-editor>
     </div>
 
     <br>
 
-    <div class="form-group">
+    <div>
       <button >Save</button>
       <button type="button" (click)="deleteData(note._id)">Delete</button>
     </div>
