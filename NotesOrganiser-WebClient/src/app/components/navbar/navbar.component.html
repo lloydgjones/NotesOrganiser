@@ -1,18 +1,18 @@
-<nav class="flex items-center justify-between flex-wrap bg-slate-800 p-6">
-  <div class="flex items-center flex-shrink-0 text-white mr-6">
-    <span class="font-semibold text-xl tracking-tight">NotesOrganiser</span>
-  </div>
-  <div class="block lg:hidden">
-    <button class="flex items-center px-3 py-2 border rounded text-teal-200 border-teal-400 hover:text-white hover:border-white">
-      <svg class="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Menu</title><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/></svg>
-    </button>
-  </div>
-  <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
-    <div class="text-sm lg:flex-grow">
-      <a class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4" routerLink="notes">Notes</a>
-      <a class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4" routerLink="tasks">Tasks</a>
-      <a class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4" routerLink="calendar">Calendar</a>
-      <a class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4" routerLink="settings">Settings</a>
+<nav class="bg-slate-800 px-3 py-3">
+  <div class="flex flex-wrap items-center justify-between">
+    <div>
+      <span class="text-white text-2xl font-semibold">NotesOrganiser</span>
+    </div>
+    <div class="hidden w-full md:flex md:w-auto">
+      <ul class="flex flex-col mt-4 md:flex-row md:space-x-6 md:mt-0">
+        <li><a class="block px-3 items-center text-gray-300 hover:text-white" routerLink="notes">Notes</a></li>
+        <li><a class="block px-3 items-center text-gray-300 hover:text-white" routerLink="tasks">Tasks</a></li>
+        <li><a class="block px-3 items-center text-gray-300 hover:text-white" routerLink="calendar">Calendar</a></li>
+        <li><a class="block px-3 items-center text-gray-300 hover:text-white" routerLink="settings">Settings</a></li>
+      </ul>
+    </div>
+    <div class="flex w-32 justify-end">
+      <button type="button" class="bg-teal-800 rounded w-8 h-8 focus:ring-2 focus:ring-gray-600"></button>
     </div>
   </div>
 </nav>
