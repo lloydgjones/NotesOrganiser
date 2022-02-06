@@ -9,12 +9,12 @@ export class TaskService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getData() {
-    return this.httpClient.get(environment.apiUrl+'/tasks');
-  }
-
   getDataById(id) {
     return this.httpClient.get(environment.apiUrl+'/task/'+id);
+  }
+
+  getDataByUser(user) {
+    return this.httpClient.get(environment.apiUrl+'/tasks/'+user);
   }
 
   insertData(data) {

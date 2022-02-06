@@ -15,7 +15,7 @@ export class EditTaskComponent implements OnInit {
   task = new Task();
   id:any;
   data:any;
-  constructor(private taskService: TaskService, private route: ActivatedRoute, private toastr: ToastrService, private router: Router) { }
+  constructor(private _router: Router, private taskService: TaskService, private route: ActivatedRoute, private toastr: ToastrService) { }
 
   editTaskForm = new FormGroup({
     name: new FormControl(''),
@@ -26,10 +26,10 @@ export class EditTaskComponent implements OnInit {
   ngOnInit(): void {
     this.id = this.route.snapshot.params.id;
     console.log(this.id);
-    this.getTaskData();
+    this.getData();
   }
 
-  getTaskData(){
+  getData(){
     this.taskService.getDataById(this.id).subscribe(
       res => {
         this.data = res;
@@ -60,13 +60,13 @@ export class EditTaskComponent implements OnInit {
     this.taskService.deleteData(id).subscribe(
       res => {
         this.data = res;
-        this.toastr.error(JSON.stringify(this.data.message), "Success", {
+        this.toastr.error(JSON.stringify(this.data.message), "", {
           timeOut: 2000,
           progressBar: true,
           positionClass: "toast-bottom-right"
         });
-        this.getTaskData();
-        this.router.navigateByUrl('/tasks');
+        this.getData();
+        this._router.navigateByUrl('/tasks');
       }
     );
   }

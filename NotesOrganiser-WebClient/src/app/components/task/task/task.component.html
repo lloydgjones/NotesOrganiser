@@ -5,6 +5,7 @@
         <th class="px-4 py-1 border border-slate-500" scope="col">Name</th>
         <th class="px-4 py-1 border border-slate-500" scope="col">Weight</th>
         <th class="px-4 py-1 border border-slate-500" scope="col"></th>
+        <th class="px-4 py-1 border border-slate-500" scope="col"></th>
       </tr>
     </thead>
 
@@ -14,6 +15,9 @@
         <td class="px-4 py-1 border border-slate-500">{{task.weight}}</td>
         <td class="px-4 py-1 border border-slate-500">
           <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-4 mx-2 rounded focus:outline-none focus:shadow-outline" routerLink="/task/edit/{{task._id}}">Edit</button>
+        </td>
+        <td class="px-4 py-1 border border-slate-500">
+          <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-4 mx-2 rounded focus:outline-none focus:shadow-outline" type="button" (click)="deleteData(task._id)">Delete</button>
         </td>
       </tr>
     </tbody>

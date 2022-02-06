@@ -30,11 +30,25 @@ export class TaskComponent implements OnInit {
     this.getData();
   }
 
-  // TODO: Pass In User ID
   getData() {
-    this.taskService.getData().subscribe(
+    this.taskService.getDataByUser(this.email).subscribe(
       res => {
-        this.tasks = Object.keys(res).map(index => { let task = res[index]; return task; }).filter(task => task.account == this.email);
+        this.tasks = Object.keys(res).map(index => { let task = res[index]; return task; });
+      }
+    );
+  }
+
+  deleteData(id) {
+    this.taskService.deleteData(id).subscribe(
+      res => {
+        this.data = res;
+        this.toastr.error(JSON.stringify(this.data.message), "", {
+          timeOut: 2000,
+          progressBar: true,
+          positionClass: "toast-bottom-right"
+        });
+        this.getData();
+        this._router.navigateByUrl('/tasks');
       }
     );
   }

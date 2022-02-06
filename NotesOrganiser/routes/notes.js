@@ -3,9 +3,9 @@ const router = express.Router();
 
 const { Note } = require('../models/note');
 
-// Get All Notes
-router.get('/api/notes', (req, res) => {
-    Note.find({}, (err, data) => {
+// Get Notes By User
+router.get('/api/notes/:user', (req, res) => {
+    Note.find({ account: req.params.user }, (err, data) => {
         if(!err) {
             res.send(data);
         } else {
@@ -14,7 +14,7 @@ router.get('/api/notes', (req, res) => {
     });
 });
 
-// Get One Note
+// Get Note By ID
 router.get('/api/note/:id', (req, res) => {
     Note.findById(req.params.id, (err, data) => {
         if(!err) {
@@ -41,7 +41,7 @@ router.post('/api/note/add', (req, res) => {
     });
 });
 
-// Update Note
+// Edit Note
 router.put('/api/note/update/:id', (req, res) => {
     const note = {
         name: req.body.name,

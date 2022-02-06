@@ -3,9 +3,9 @@ const router = express.Router();
 
 const { Task } = require('../models/task');
 
-// Get All Tasks
-router.get('/api/tasks', (req, res) => {
-    Task.find({}, (err, data) => {
+// Get Tasks By User
+router.get('/api/tasks/:user', (req, res) => {
+    Task.find({ account: req.params.user }, (err, data) => {
         if(!err) {
             res.send(data);
         } else {
@@ -14,7 +14,7 @@ router.get('/api/tasks', (req, res) => {
     });
 });
 
-// Get One Task
+// Get Task By ID
 router.get('/api/task/:id', (req, res) => {
     Task.findById(req.params.id, (err, data) => {
         if(!err) {
@@ -42,7 +42,7 @@ router.post('/api/task/add', (req, res) => {
     });
 });
 
-// Update Task
+// Edit Task
 router.put('/api/task/update/:id', (req, res) => {
     const task = {
         name: req.body.name,

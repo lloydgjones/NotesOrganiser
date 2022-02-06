@@ -15,7 +15,7 @@ export class EditNoteComponent implements OnInit {
   note = new Note();
   id:any;
   data:any;
-  constructor(private noteService: NoteService, private route: ActivatedRoute, private toastr: ToastrService, private router: Router) { }
+  constructor(private _router: Router, private noteService: NoteService, private route: ActivatedRoute, private toastr: ToastrService) { }
 
   editNoteForm = new FormGroup({
     name: new FormControl(''),
@@ -58,13 +58,13 @@ export class EditNoteComponent implements OnInit {
     this.noteService.deleteData(id).subscribe(
       res => {
         this.data = res;
-        this.toastr.error(JSON.stringify(this.data.message), "Error", {
+        this.toastr.error(JSON.stringify(this.data.message), "", {
           timeOut: 2000,
           progressBar: true,
           positionClass: "toast-bottom-right"
         });
 
-        this.router.navigateByUrl('/notes');
+        this._router.navigateByUrl('/notes');
       }
     );
   }

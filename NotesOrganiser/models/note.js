@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 
-// Note Schema
 const Note = mongoose.model('Note', {
     account: {
         type: String,

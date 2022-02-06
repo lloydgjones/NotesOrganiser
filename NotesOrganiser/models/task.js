@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 
-// Task Schema
 const Task = mongoose.model('Task', {
     account: {
         type: String,

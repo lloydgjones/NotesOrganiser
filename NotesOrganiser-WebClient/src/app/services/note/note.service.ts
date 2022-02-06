@@ -9,12 +9,12 @@ export class NoteService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getData() {
-    return this.httpClient.get(environment.apiUrl+'/notes');
-  }
-
   getDataById(id) {
     return this.httpClient.get(environment.apiUrl+'/note/'+id);
+  }
+
+  getDataByUser(user) {
+    return this.httpClient.get(environment.apiUrl+'/notes/'+user);
   }
 
   insertData(data) {

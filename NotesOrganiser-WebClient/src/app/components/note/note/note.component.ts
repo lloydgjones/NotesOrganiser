@@ -14,7 +14,7 @@ export class NoteComponent implements OnInit {
   data: any;
   email: String;
   notes: any[];
-  constructor(private _router: Router, private _user: UserService, private noteService:NoteService, private toastr: ToastrService) {
+  constructor(private _router: Router, private _user: UserService, private noteService: NoteService, private toastr: ToastrService) {
   }
 
   ngOnInit(): void {
@@ -30,11 +30,25 @@ export class NoteComponent implements OnInit {
     this.getData();
   }
 
-  // TODO: Pass In User ID
   getData() {
-    this.noteService.getData().subscribe(
+    this.noteService.getDataByUser(this.email).subscribe(
       res => {
-        this.notes = Object.keys(res).map(index => { let note = res[index]; return note; }).filter(note => note.account == this.email);
+        this.notes = Object.keys(res).map(index => { let note = res[index]; return note; });
+      }
+    );
+  }
+
+  deleteData(id) {
+    this.noteService.deleteData(id).subscribe(
+      res => {
+        this.data = res;
+        this.toastr.error(JSON.stringify(this.data.message), "", {
+          timeOut: 2000,
+          progressBar: true,
+          positionClass: "toast-bottom-right"
+        });
+
+        this._router.navigateByUrl('/notes');
       }
     );
   }

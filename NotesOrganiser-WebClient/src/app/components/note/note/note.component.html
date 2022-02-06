@@ -4,6 +4,7 @@
       <tr class="bg-slate-300">
         <th class="px-4 py-1 border border-slate-500" scope="col">Name</th>
         <th class="px-4 py-1 border border-slate-500" scope="col"></th>
+        <th class="px-4 py-1 border border-slate-500" scope="col"></th>
       </tr>
     </thead>
 
@@ -12,6 +13,9 @@
         <td class="px-4 py-1 border border-slate-500">{{note.name}}</td>
         <td class="px-4 py-1 border border-slate-500">
           <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-4 mx-2 rounded focus:outline-none focus:shadow-outline" routerLink="/note/edit/{{note._id}}">Edit</button>
+        </td>
+        <td class="px-4 py-1 border border-slate-500">
+          <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-4 mx-2 rounded focus:outline-none focus:shadow-outline" type="button" (click)="deleteData(note._id)">Delete</button>
         </td>
       </tr>
     </tbody>
