@@ -1,4 +1,4 @@
-export class Item {
+export interface Item {
   _id:any;
   account:any;
   name:any;

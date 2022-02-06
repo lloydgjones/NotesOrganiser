@@ -4,6 +4,7 @@ import { UserService } from 'src/app/services/user/user.service';
 import { NoteService } from 'src/app/services/note/note.service';
 import { ToastrService } from 'ngx-toastr';
 
+// TODO: isLoading for All Components
 @Component({
   selector: 'app-note',
   templateUrl: './note.component.html',
@@ -29,11 +30,11 @@ export class NoteComponent implements OnInit {
     this.getData();
   }
 
+  // TODO: Pass In User ID
   getData() {
     this.noteService.getData().subscribe(
       res => {
-        this.notes = Object.keys(res).map(index => { let note = res[index]; return note; });
-        this.notes = this.notes.filter(note => note.account == this.email);
+        this.notes = Object.keys(res).map(index => { let note = res[index]; return note; }).filter(note => note.account == this.email);
       }
     );
   }

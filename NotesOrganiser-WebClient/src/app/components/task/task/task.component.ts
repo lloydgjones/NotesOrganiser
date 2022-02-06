@@ -4,6 +4,7 @@ import { UserService } from 'src/app/services/user/user.service';
 import { TaskService } from 'src/app/services/task/task.service';
 import { ToastrService } from 'ngx-toastr';
 
+// TODO: isLoading for All Components
 @Component({
   selector: 'app-task',
   templateUrl: './task.component.html',
@@ -29,11 +30,11 @@ export class TaskComponent implements OnInit {
     this.getData();
   }
 
+  // TODO: Pass In User ID
   getData() {
     this.taskService.getData().subscribe(
       res => {
-        this.tasks = Object.keys(res).map(index => { let task = res[index]; return task; });
-        this.tasks = this.tasks.filter(task => task.account == this.email);
+        this.tasks = Object.keys(res).map(index => { let task = res[index]; return task; }).filter(task => task.account == this.email);
       }
     );
   }
