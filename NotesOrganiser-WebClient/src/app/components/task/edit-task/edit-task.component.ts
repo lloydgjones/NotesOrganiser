@@ -20,6 +20,7 @@ export class EditTaskComponent implements OnInit {
   editTaskForm = new FormGroup({
     name: new FormControl(''),
     content: new FormControl(''),
+    time: new FormControl(''),
     weight: new FormControl('')
   })
 
@@ -37,6 +38,7 @@ export class EditTaskComponent implements OnInit {
         this.editTaskForm = new FormGroup({
           name: new FormControl(this.task.name),
           content: new FormControl(this.task.content),
+          time: new FormControl(this.task.time),
           weight: new FormControl(this.task.weight)
         });
       }

@@ -48,7 +48,7 @@ export class NoteComponent implements OnInit {
           positionClass: "toast-bottom-right"
         });
 
-        this._router.navigateByUrl('/notes');
+        this.getData();
       }
     );
   }

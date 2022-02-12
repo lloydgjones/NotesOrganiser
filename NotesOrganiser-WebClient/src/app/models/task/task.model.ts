@@ -5,5 +5,6 @@ export class Task implements Item {
   account:any;
   name:any;
   content:any;
+  time: Date;
   weight:Number;
 }

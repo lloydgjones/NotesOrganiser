@@ -5,4 +5,5 @@ export class Note implements Item {
   account:any;
   name:any;
   content:any;
+  time: Date;
 }

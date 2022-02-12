@@ -47,8 +47,8 @@ export class TaskComponent implements OnInit {
           progressBar: true,
           positionClass: "toast-bottom-right"
         });
+
         this.getData();
-        this._router.navigateByUrl('/tasks');
       }
     );
   }

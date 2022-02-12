@@ -23,7 +23,7 @@ export class AddNoteComponent implements OnInit {
       account: '',
       name: ['', Validators.required],
       content: ['', Validators.required],
-      time: ['']
+      time: [''],
     });
   }
 
