@@ -26,7 +26,6 @@ export class EditTaskComponent implements OnInit {
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params.id;
-    console.log(this.id);
     this.getData();
   }
 
@@ -38,7 +37,7 @@ export class EditTaskComponent implements OnInit {
         this.editTaskForm = new FormGroup({
           name: new FormControl(this.task.name),
           content: new FormControl(this.task.content),
-          time: new FormControl(this.task.time),
+          time: new FormControl(this.task.time.toLocaleString().replace('Z', '')),
           weight: new FormControl(this.task.weight)
         });
       }

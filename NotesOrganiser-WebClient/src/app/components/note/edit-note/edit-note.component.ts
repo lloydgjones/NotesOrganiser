@@ -25,7 +25,6 @@ export class EditNoteComponent implements OnInit {
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params.id;
-    console.log(this.id);
     this.getNoteData();
   }
 
@@ -37,7 +36,7 @@ export class EditNoteComponent implements OnInit {
         this.editNoteForm = new FormGroup({
           name: new FormControl(this.note.name),
           content: new FormControl(this.note.content),
-          time: new FormControl(this.note.time)
+          time: new FormControl(this.note.time.toLocaleString().replace('Z', ''))
         }
       );
     })
