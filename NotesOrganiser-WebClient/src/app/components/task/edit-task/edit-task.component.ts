@@ -13,8 +13,9 @@ import { Router} from '@angular/router';
 })
 export class EditTaskComponent implements OnInit {
   task = new Task();
-  id:any;
-  data:any;
+  id: any;
+  data: any;
+  normalTime: any;
   constructor(private _router: Router, private taskService: TaskService, private route: ActivatedRoute, private toastr: ToastrService) { }
 
   editTaskForm = new FormGroup({
@@ -34,10 +35,11 @@ export class EditTaskComponent implements OnInit {
       res => {
         this.data = res;
         this.task = this.data;
+        if(this.task.time != null) { this.normalTime = this.task.time.toLocaleString().replace('Z', '') }
         this.editTaskForm = new FormGroup({
           name: new FormControl(this.task.name),
           content: new FormControl(this.task.content),
-          time: new FormControl(this.task.time.toLocaleString().replace('Z', '')),
+          time: new FormControl(this.normalTime),
           weight: new FormControl(this.task.weight)
         });
       }

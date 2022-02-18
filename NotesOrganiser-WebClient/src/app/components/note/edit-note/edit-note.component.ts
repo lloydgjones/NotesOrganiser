@@ -13,8 +13,9 @@ import { Router} from '@angular/router';
 })
 export class EditNoteComponent implements OnInit {
   note = new Note();
-  id:any;
-  data:any;
+  id: any;
+  data: any;
+  normalTime: any;
   constructor(private _router: Router, private noteService: NoteService, private route: ActivatedRoute, private toastr: ToastrService) { }
 
   editNoteForm = new FormGroup({
@@ -33,10 +34,11 @@ export class EditNoteComponent implements OnInit {
       res => {
         this.data = res;
         this.note = this.data;
+        if(this.note.time != null) { this.normalTime = this.note.time.toLocaleString().replace('Z', '') }
         this.editNoteForm = new FormGroup({
           name: new FormControl(this.note.name),
           content: new FormControl(this.note.content),
-          time: new FormControl(this.note.time.toLocaleString().replace('Z', ''))
+          time: new FormControl(this.normalTime)
         }
       );
     })
