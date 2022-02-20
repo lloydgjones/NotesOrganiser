@@ -1,8 +1,8 @@
-import { UserService } from 'src/app/services/user/user.service';
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { UserService } from 'src/app/services/user/user.service';
 
 @Component({
   selector: 'app-login',

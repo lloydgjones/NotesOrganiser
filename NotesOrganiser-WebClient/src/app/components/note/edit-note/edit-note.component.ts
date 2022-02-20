@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { FormControl, FormGroup } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { NoteService } from 'src/app/services/note/note.service';
 import { Note } from 'src/app/models/note/note.model';
-import { Router} from '@angular/router';
+import { NoteService } from 'src/app/services/note/note.service';
 
 @Component({
   selector: 'app-edit-note',
@@ -16,6 +15,7 @@ export class EditNoteComponent implements OnInit {
   id: any;
   data: any;
   normalTime: any;
+
   constructor(private _router: Router, private noteService: NoteService, private route: ActivatedRoute, private toastr: ToastrService) { }
 
   editNoteForm = new FormGroup({

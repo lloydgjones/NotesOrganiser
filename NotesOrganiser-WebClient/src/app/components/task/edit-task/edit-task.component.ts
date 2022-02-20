@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { FormControl, FormGroup } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { TaskService } from 'src/app/services/task/task.service';
 import { Task } from 'src/app/models/task/task.model';
-import { Router} from '@angular/router';
+import { TaskService } from 'src/app/services/task/task.service';
 
 @Component({
   selector: 'app-edit-task',
@@ -16,6 +15,7 @@ export class EditTaskComponent implements OnInit {
   id: any;
   data: any;
   normalTime: any;
+
   constructor(private _router: Router, private taskService: TaskService, private route: ActivatedRoute, private toastr: ToastrService) { }
 
   editTaskForm = new FormGroup({

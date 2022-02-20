@@ -1,8 +1,8 @@
-import { Note } from 'src/app/models/note/note.model';
-import { Task } from 'src/app/models/task/task.model';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CalendarOptions } from '@fullcalendar/angular';
+import { Note } from 'src/app/models/note/note.model';
+import { Task } from 'src/app/models/task/task.model';
 import { NoteService } from 'src/app/services/note/note.service';
 import { TaskService } from 'src/app/services/task/task.service';
 import { UserService } from 'src/app/services/user/user.service';
@@ -13,11 +13,12 @@ import { UserService } from 'src/app/services/user/user.service';
   styleUrls: ['./calendar.component.css']
 })
 export class CalendarComponent implements OnInit {
+  isDoneLoading: boolean = false;
   data: any;
-  email: String;
   notes: any;
   tasks: any;
   events: any;
+  email: String;
 
   calendarOptions: CalendarOptions = {
     nextDayThreshold: '02:00:00',
@@ -96,6 +97,7 @@ export class CalendarComponent implements OnInit {
         });
 
         this.calendarOptions.events = this.events.concat(this.tasks);
+        this.isDoneLoading = true;
       }
     );
   }

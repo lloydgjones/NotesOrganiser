@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { UserService } from 'src/app/services/user/user.service';
-import { TaskService } from 'src/app/services/task/task.service';
-import { ToastrService } from 'ngx-toastr';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { TaskService } from 'src/app/services/task/task.service';
+import { UserService } from 'src/app/services/user/user.service';
 
 @Component({
   selector: 'app-add-task',
@@ -12,9 +12,10 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class AddTaskComponent implements OnInit {
   data: any;
-  addTaskForm: FormGroup;
-  submitted=false;
   email: String;
+  submitted=false;
+  addTaskForm: FormGroup;
+
   constructor(private _router: Router, private _user: UserService, private taskService: TaskService, private formBuilder: FormBuilder, private toastr: ToastrService) {
   }
 

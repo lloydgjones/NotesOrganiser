@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { UserService } from 'src/app/services/user/user.service';
-import { NoteService } from 'src/app/services/note/note.service';
-import { ToastrService } from 'ngx-toastr';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { NoteService } from 'src/app/services/note/note.service';
+import { UserService } from 'src/app/services/user/user.service';
 
 @Component({
   selector: 'app-add-note',
@@ -12,9 +12,10 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class AddNoteComponent implements OnInit {
   data: any;
-  addNoteForm: FormGroup;
-  submitted=false;
   email: String;
+  submitted=false;
+  addNoteForm: FormGroup;
+
   constructor(private _router: Router, private _user: UserService, private noteService: NoteService, private formBuilder: FormBuilder, private toastr: ToastrService) {
   }
 

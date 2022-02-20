@@ -1,19 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { UserService } from 'src/app/services/user/user.service';
-import { TaskService } from 'src/app/services/task/task.service';
 import { ToastrService } from 'ngx-toastr';
+import { TaskService } from 'src/app/services/task/task.service';
+import { UserService } from 'src/app/services/user/user.service';
 
-// TODO: isLoading for All Components
 @Component({
   selector: 'app-task',
   templateUrl: './task.component.html',
   styleUrls: ['./task.component.css']
 })
 export class TaskComponent implements OnInit {
+  isDoneLoading: boolean = false;
   data: any;
-  email: String;
   tasks: any[];
+  email: String;
+
   constructor(private _router: Router, private _user: UserService, private taskService: TaskService, private toastr: ToastrService) {
   }
 
@@ -34,6 +35,7 @@ export class TaskComponent implements OnInit {
     this.taskService.getDataByUser(this.email).subscribe(
       res => {
         this.tasks = Object.keys(res).map(index => { let task = res[index]; return task; });
+        this.isDoneLoading = true;
       }
     );
   }

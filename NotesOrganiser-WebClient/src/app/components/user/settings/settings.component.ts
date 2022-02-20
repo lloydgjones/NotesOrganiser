@@ -9,8 +9,10 @@ import { UserService } from 'src/app/services/user/user.service';
   styleUrls: ['./settings.component.css']
 })
 export class SettingsComponent implements OnInit {
+  isDoneLoading: boolean = false;
   data:any;
   username: String;
+
   constructor(private _router: Router, private _user: UserService, private toastr: ToastrService) {
   }
 
@@ -24,6 +26,7 @@ export class SettingsComponent implements OnInit {
 
   getName(data){
     this.username = data.username;
+    this.isDoneLoading = true;
   }
 
   logout(){

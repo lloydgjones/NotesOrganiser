@@ -1,19 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { UserService } from 'src/app/services/user/user.service';
-import { NoteService } from 'src/app/services/note/note.service';
 import { ToastrService } from 'ngx-toastr';
+import { NoteService } from 'src/app/services/note/note.service';
+import { UserService } from 'src/app/services/user/user.service';
 
-// TODO: isLoading for All Components
 @Component({
   selector: 'app-note',
   templateUrl: './note.component.html',
   styleUrls: ['./note.component.css']
 })
 export class NoteComponent implements OnInit {
+  isDoneLoading: boolean = false;
   data: any;
-  email: String;
   notes: any[];
+  email: String;
+
   constructor(private _router: Router, private _user: UserService, private noteService: NoteService, private toastr: ToastrService) {
   }
 
@@ -34,6 +35,7 @@ export class NoteComponent implements OnInit {
     this.noteService.getDataByUser(this.email).subscribe(
       res => {
         this.notes = Object.keys(res).map(index => { let note = res[index]; return note; });
+        this.isDoneLoading = true;
       }
     );
   }
