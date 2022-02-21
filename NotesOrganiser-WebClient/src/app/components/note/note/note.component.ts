@@ -16,8 +16,7 @@ export class NoteComponent implements OnInit {
   notes: any[];
   email: String;
 
-  constructor(private _router: Router, private _user: UserService, private noteService: NoteService, private toastr: ToastrService) {
-  }
+  constructor(private _router: Router, private _user: UserService, private noteService: NoteService, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this._user.getUser()

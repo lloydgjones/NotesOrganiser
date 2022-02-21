@@ -10,13 +10,14 @@ import { UserService } from 'src/app/services/user/user.service';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  data:any;
-  registerForm:FormGroup = new FormGroup({
+  data: any;
+  registerForm: FormGroup = new FormGroup({
     email: new FormControl(null, [Validators.email, Validators.required]),
     username: new FormControl(null, Validators.required),
     password1: new FormControl(null, Validators.required),
     password2: new FormControl(null, Validators.required)
   })
+
   constructor(private _router: Router, private _user: UserService, private toastr: ToastrService) { }
 
   ngOnInit(): void {

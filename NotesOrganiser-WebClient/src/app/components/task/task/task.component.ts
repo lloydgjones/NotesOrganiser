@@ -16,8 +16,7 @@ export class TaskComponent implements OnInit {
   tasks: any[];
   email: String;
 
-  constructor(private _router: Router, private _user: UserService, private taskService: TaskService, private toastr: ToastrService) {
-  }
+  constructor(private _router: Router, private _user: UserService, private taskService: TaskService, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this._user.getUser()

@@ -16,8 +16,7 @@ export class AddNoteComponent implements OnInit {
   submitted=false;
   addNoteForm: FormGroup;
 
-  constructor(private _router: Router, private _user: UserService, private noteService: NoteService, private formBuilder: FormBuilder, private toastr: ToastrService) {
-  }
+  constructor(private _router: Router, private _user: UserService, private noteService: NoteService, private formBuilder: FormBuilder, private toastr: ToastrService) { }
 
   createForm() {
     this.addNoteForm = this.formBuilder.group({

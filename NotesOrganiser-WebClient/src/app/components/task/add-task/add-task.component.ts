@@ -16,8 +16,7 @@ export class AddTaskComponent implements OnInit {
   submitted=false;
   addTaskForm: FormGroup;
 
-  constructor(private _router: Router, private _user: UserService, private taskService: TaskService, private formBuilder: FormBuilder, private toastr: ToastrService) {
-  }
+  constructor(private _router: Router, private _user: UserService, private taskService: TaskService, private formBuilder: FormBuilder, private toastr: ToastrService) { }
 
   createForm() {
     this.addTaskForm = this.formBuilder.group({

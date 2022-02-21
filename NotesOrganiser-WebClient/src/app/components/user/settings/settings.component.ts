@@ -13,8 +13,7 @@ export class SettingsComponent implements OnInit {
   data:any;
   username: String;
 
-  constructor(private _router: Router, private _user: UserService, private toastr: ToastrService) {
-  }
+  constructor(private _router: Router, private _user: UserService, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this._user.getUser()

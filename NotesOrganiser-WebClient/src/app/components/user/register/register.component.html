@@ -2,23 +2,19 @@
   <form class="bg-slate-200 shadow-md rounded px-8 py-6" [formGroup]="registerForm">
     <div class="mb-4">
       <label class="block text-gray-700 text-md font-bold mb-2" for="inputEmail">Email</label>
-      <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none" formControlName="email" type="email" id="inputEmail" aria-describedby="emailHelp" placeholder="Enter Email">
-      <small id="emailHelp"></small>
+      <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none" formControlName="email" type="email" placeholder="Enter Email">
     </div>
     <div class="mb-4">
       <label class="block text-gray-700 text-md font-bold mb-2" for="inputUsername">Username</label>
-      <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none" formControlName="username" type="text" id="inputUsername" aria-describedby="usernameHelp" placeholder="Enter Username">
-      <small id="usernameHelp"></small>
+      <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none" formControlName="username" type="text" placeholder="Enter Username">
     </div>
     <div class="mb-4">
       <label class="block text-gray-700 text-md font-bold mb-2" for="inputPassword1">Password</label>
-      <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none" formControlName="password1" type="password" id="inputPassword1" aria-describedby="password1Help" placeholder="Enter Password">
-      <small id="password1Help"></small>
+      <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none" formControlName="password1" type="password" placeholder="Enter Password">
     </div>
     <div class="mb-4">
       <label class="block text-gray-700 text-md font-bold mb-2" for="inputPassword2">Confirm Password</label>
-      <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none" formControlName="password1" type="password" id="inputPassword2" aria-describedby="password2Help" placeholder="Repeat Password">
-      <small id="password2Help"></small>
+      <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none" formControlName="password1" type="password" placeholder="Repeat Password">
     </div>
     <div class="flex items-center mt-5">
         <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mx-2 rounded focus:outline-none focus:shadow-outline" type="button" (click)="register()">Register</button>
