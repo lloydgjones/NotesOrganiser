@@ -26,7 +26,11 @@ export class LoginComponent implements OnInit {
 
   login(){
     if(!this.loginForm.valid){
-      console.log('Invalid Form');
+      this.toastr.error("Invalid Form", "Error", {
+        timeOut: 2000,
+        progressBar: true,
+        positionClass: "toast-bottom-right"
+      });
       return;
     }
 
