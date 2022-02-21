@@ -65,7 +65,6 @@ export class CalendarComponent implements OnInit {
     };
   }
 
-  // TODO: Item Functions
   getNoteData() {
     this.noteService.getDataByUser(this.email).subscribe(
       res => {
