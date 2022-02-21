@@ -2,7 +2,7 @@
   <table class="border-collapse border border-slate-500 bg-slate-200">
     <thead>
       <tr class="bg-slate-300">
-        <th class="px-4 py-1 border border-slate-500" scope="col">Name</th>
+        <th class="px-4 py-1 border border-slate-500" scope="col"><button class="text-blue-700 font-bold hover:underline" (click)="isSortedByNameAsc ? sortByNameDesc() : sortByNameAsc()">{{isSortedByNameAsc == true ? "↑ Name" : "↓ Name"}}</button></th>
         <th class="px-4 py-1 border border-slate-500" scope="col"></th>
         <th class="px-4 py-1 border border-slate-500" scope="col"></th>
       </tr>

@@ -10,7 +10,8 @@ import { UserService } from 'src/app/services/user/user.service';
   styleUrls: ['./task.component.css']
 })
 export class TaskComponent implements OnInit {
-  isDoneLoading: boolean = false;
+  isDoneLoading = false;
+  isSortedByNameAsc = true;
   data: any;
   tasks: any[];
   email: String;
@@ -35,9 +36,20 @@ export class TaskComponent implements OnInit {
     this.taskService.getDataByUser(this.email).subscribe(
       res => {
         this.tasks = Object.keys(res).map(index => { let task = res[index]; return task; });
+        this.sortByNameAsc();
         this.isDoneLoading = true;
       }
     );
+  }
+
+  sortByNameAsc() {
+    this.tasks.sort((a,b) => a.name.localeCompare(b.name));
+    this.isSortedByNameAsc = true;
+  }
+
+  sortByNameDesc() {
+    this.tasks.sort((a,b) => b.name.localeCompare(a.name));
+    this.isSortedByNameAsc = false;
   }
 
   deleteData(id) {

@@ -10,7 +10,8 @@ import { UserService } from 'src/app/services/user/user.service';
   styleUrls: ['./note.component.css']
 })
 export class NoteComponent implements OnInit {
-  isDoneLoading: boolean = false;
+  isDoneLoading = false;
+  isSortedByNameAsc = true;
   data: any;
   notes: any[];
   email: String;
@@ -35,9 +36,20 @@ export class NoteComponent implements OnInit {
     this.noteService.getDataByUser(this.email).subscribe(
       res => {
         this.notes = Object.keys(res).map(index => { let note = res[index]; return note; });
+        this.sortByNameAsc();
         this.isDoneLoading = true;
       }
     );
+  }
+
+  sortByNameAsc() {
+    this.notes.sort((a,b) => a.name.localeCompare(b.name));
+    this.isSortedByNameAsc = true;
+  }
+
+  sortByNameDesc() {
+    this.notes.sort((a,b) => b.name.localeCompare(a.name));
+    this.isSortedByNameAsc = false;
   }
 
   deleteData(id) {
