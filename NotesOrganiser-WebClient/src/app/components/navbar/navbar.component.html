@@ -1,18 +1,18 @@
 <nav class="bg-slate-800 px-3 py-3">
   <div class="flex flex-wrap items-center justify-between">
-    <div>
-      <span class="text-white text-2xl font-semibold">NotesOrganiser</span>
-    </div>
-    <div class="hidden w-full md:flex md:w-auto">
+    <span class="text-white text-2xl font-semibold">NotesOrganiser</span>
+    <button class="space-y-2 md:hidden" (click)="toggleCollapse()">
+      <div class="w-8 h-0.5 bg-gray-200"></div>
+      <div class="w-8 h-0.5 bg-gray-200"></div>
+      <div class="w-8 h-0.5 bg-gray-200"></div>
+    </button>
+    <div class="w-full md:flex md:w-auto" [ngClass]="isCollapsed ? 'hidden' : 'visible'">
       <ul class="flex flex-col mt-4 md:flex-row md:space-x-6 md:mt-0">
-        <li><a class="block px-3 items-center text-gray-300 hover:text-white" routerLink="notes">Notes</a></li>
-        <li><a class="block px-3 items-center text-gray-300 hover:text-white" routerLink="tasks">Tasks</a></li>
-        <li><a class="block px-3 items-center text-gray-300 hover:text-white" routerLink="calendar">Calendar</a></li>
-        <li><a class="block px-3 items-center text-gray-300 hover:text-white" routerLink="settings">Settings</a></li>
+        <li><a class="block px-3 py-1 items-center text-gray-300 hover:text-white" routerLink="notes">Notes</a></li>
+        <li><a class="block px-3 py-1 items-center text-gray-300 hover:text-white" routerLink="tasks">Tasks</a></li>
+        <li><a class="block px-3 py-1 items-center text-gray-300 hover:text-white" routerLink="calendar">Calendar</a></li>
+        <li><a class="block px-3 py-1 items-center text-gray-300 hover:text-white" routerLink="settings">Settings</a></li>
       </ul>
-    </div>
-    <div class="flex w-32 justify-end">
-      <button type="button"></button>
     </div>
   </div>
 </nav>
