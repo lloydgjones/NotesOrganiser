@@ -24,6 +24,7 @@ export class AddNoteComponent implements OnInit {
       name: ['', Validators.required],
       content: ['', Validators.required],
       time: [''],
+      tags: ['']
     });
   }
 

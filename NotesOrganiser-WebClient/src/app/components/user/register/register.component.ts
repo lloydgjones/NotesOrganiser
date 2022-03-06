@@ -11,6 +11,7 @@ import { UserService } from 'src/app/services/user/user.service';
 })
 export class RegisterComponent implements OnInit {
   data: any;
+  submitted=false;
   isPasswordVisible = false;
   registerForm: FormGroup = new FormGroup({
     email: new FormControl(null, [Validators.email, Validators.required]),
@@ -32,7 +33,12 @@ export class RegisterComponent implements OnInit {
     this.isPasswordVisible = !this.isPasswordVisible;
   }
 
+  get f() {
+    return this.registerForm.controls;
+  }
   register(){
+    this.submitted=true;
+
     if(!this.registerForm.valid || (this.registerForm.controls.password1.value != this.registerForm.controls.password2.value)){
       this.toastr.error("Invalid Form", "Error", {
         timeOut: 2000,

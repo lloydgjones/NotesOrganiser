@@ -31,7 +31,8 @@ router.post('/api/note/add', (req, res) => {
         account: req.body.account,
         name: req.body.name,
         content: req.body.content,
-        time: req.body.time
+        time: req.body.time,
+        tags: req.body.tags
     });
     note.save((err, data) => {
         if(!err) {
@@ -47,7 +48,8 @@ router.put('/api/note/update/:id', (req, res) => {
     const note = {
         name: req.body.name,
         content: req.body.content,
-        time: req.body.time
+        time: req.body.time,
+        tags: req.body.tags
     };
     Note.findByIdAndUpdate(req.params.id, { $set:note }, { new:true }, (err, data) => {
         if(!err) {

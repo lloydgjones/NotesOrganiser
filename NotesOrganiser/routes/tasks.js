@@ -32,6 +32,7 @@ router.post('/api/task/add', (req, res) => {
         name: req.body.name,
         content: req.body.content,
         time: req.body.time,
+        tags: req.body.tags,
         importance: req.body.importance
     });
     task.save((err, data) => {
@@ -49,6 +50,7 @@ router.put('/api/task/update/:id', (req, res) => {
         name: req.body.name,
         content: req.body.content,
         time: req.body.time,
+        tags: req.body.tags,
         importance: req.body.importance
     };
     Task.findByIdAndUpdate(req.params.id, { $set:task }, { new:true }, (err, data) => {

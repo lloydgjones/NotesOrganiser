@@ -16,6 +16,10 @@ const Note = mongoose.model('Note', {
     time: {
         type: Date,
         required: false
+    },
+    tags: {
+        type: Array,
+        required: false
     }
 });
 

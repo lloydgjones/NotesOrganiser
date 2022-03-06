@@ -17,6 +17,10 @@ const Task = mongoose.model('Task', {
         type: Date,
         required: false
     },
+    tags: {
+        type: Array,
+        required: false
+    },
     importance: {
         type: Number,
         required: false

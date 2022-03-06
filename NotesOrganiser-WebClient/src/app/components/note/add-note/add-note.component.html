@@ -1,23 +1,27 @@
 <div class="mx-2 my-2">
   <form (ngSubmit)="insertData()" [formGroup]="addNoteForm">
     <div>
-      <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none mb-4" type="text" formControlName="name" [ngClass]="{ 'is-invalid': submitted && f.name.errors }" placeholder="Enter Name">
+      <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none" type="text" formControlName="name" [ngClass]="{ 'is-invalid': submitted && f.name.errors }" placeholder="Enter Name">
 
       <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
-        <div *ngIf="f.name.errors.required">Name is Required</div>
+        <div class="text-red-600" *ngIf="f.name.errors.required">Notes must have a name.</div>
       </div>
     </div>
 
-    <div>
+    <div class="mt-4">
       <quill-editor type="text" formControlName="content" [ngClass]="{ 'is-invalid': submitted && f.content.errors }" placeholder="Enter Note Text"></quill-editor>
 
       <div *ngIf="submitted && f.content.errors" class="invalid-feedback">
-        <div *ngIf="f.content.errors.required">Content is Required</div>
+        <div class="text-red-600" *ngIf="f.content.errors.required">Notes must have some content.</div>
       </div>
     </div>
 
     <div>
       <input type="datetime-local" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none mt-4" formControlName="time">
+    </div>
+
+    <div>
+      <input type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none mt-4" formControlName="tags">
     </div>
 
     <div>

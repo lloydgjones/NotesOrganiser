@@ -6,4 +6,5 @@ export class Note implements Item {
   name:any;
   content:any;
   time: Date;
+  tags:Array<String>;
 }

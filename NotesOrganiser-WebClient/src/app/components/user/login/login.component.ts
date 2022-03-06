@@ -11,6 +11,7 @@ import { UserService } from 'src/app/services/user/user.service';
 })
 export class LoginComponent implements OnInit {
   data: any;
+  submitted=false;
   isPasswordVisible = false;
   loginForm: FormGroup = new FormGroup({
     email: new FormControl(null, [Validators.email, Validators.required]),
@@ -30,7 +31,12 @@ export class LoginComponent implements OnInit {
     this.isPasswordVisible = !this.isPasswordVisible;
   }
 
+  get f() {
+    return this.loginForm.controls;
+  }
   login(){
+    this.submitted=true;
+
     if(!this.loginForm.valid){
       this.toastr.error("Invalid Form", "Error", {
         timeOut: 2000,

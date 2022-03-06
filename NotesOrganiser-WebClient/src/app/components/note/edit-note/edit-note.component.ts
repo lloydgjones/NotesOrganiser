@@ -22,6 +22,7 @@ export class EditNoteComponent implements OnInit {
     name: new FormControl(''),
     content: new FormControl(''),
     time: new FormControl(''),
+    tags: new FormControl('')
   })
 
   ngOnInit(): void {
@@ -38,7 +39,8 @@ export class EditNoteComponent implements OnInit {
         this.editNoteForm = new FormGroup({
           name: new FormControl(this.note.name),
           content: new FormControl(this.note.content),
-          time: new FormControl(this.normalTime)
+          time: new FormControl(this.normalTime),
+          tags: new FormControl(this.note.tags)
         }
       );
     })

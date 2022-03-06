@@ -3,18 +3,30 @@
     <div class="mb-4">
       <label class="block text-gray-700 text-md font-bold mb-2" for="inputEmail">Email</label>
       <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none" formControlName="email" type="email" placeholder="Enter Email">
+      <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+        <div class="text-red-600" *ngIf="f.email.errors.required || f.email.errors.email">Enter a valid email address.</div>
+      </div>
     </div>
     <div class="mb-4">
       <label class="block text-gray-700 text-md font-bold mb-2" for="inputUsername">Username</label>
       <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none" formControlName="username" type="text" placeholder="Enter Username">
+      <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+        <div class="text-red-600" *ngIf="f.username.errors.required">Enter your username.</div>
+      </div>
     </div>
     <div class="mb-4">
       <label class="block text-gray-700 text-md font-bold mb-2" for="inputPassword1">Password</label>
       <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none" formControlName="password1" [type]="isPasswordVisible ? 'text' : 'password'" placeholder="Enter Password">
+      <div *ngIf="submitted && f.password1.errors" class="invalid-feedback">
+        <div class="text-red-600" *ngIf="f.password1.errors.required">Enter your password.</div>
+      </div>
     </div>
     <div class="mb-4">
       <label class="block text-gray-700 text-md font-bold mb-2" for="inputPassword2">Confirm Password</label>
       <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none" formControlName="password2" [type]="isPasswordVisible ? 'text' : 'password'" placeholder="Repeat Password">
+      <div *ngIf="submitted && f.password2.errors" class="invalid-feedback">
+        <div class="text-red-600" *ngIf="f.password2.errors.required">Enter your password again.</div>
+      </div>
     </div>
     <div class="mb-4">
       <input type="checkbox" (click)="togglePasswordVisibility()"> Show Password

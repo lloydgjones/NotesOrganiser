@@ -22,6 +22,7 @@ export class EditTaskComponent implements OnInit {
     name: new FormControl(''),
     content: new FormControl(''),
     time: new FormControl(''),
+    tags: new FormControl(''),
     importance: new FormControl('')
   })
 
@@ -40,6 +41,7 @@ export class EditTaskComponent implements OnInit {
           name: new FormControl(this.task.name),
           content: new FormControl(this.task.content),
           time: new FormControl(this.normalTime),
+          tags: new FormControl(this.task.tags),
           importance: new FormControl(this.task.importance)
         });
       }

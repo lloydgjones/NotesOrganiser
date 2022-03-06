@@ -6,5 +6,6 @@ export class Task implements Item {
   name:any;
   content:any;
   time: Date;
+  tags:Array<String>;
   importance:Number;
 }
