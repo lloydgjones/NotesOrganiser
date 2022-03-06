@@ -52,17 +52,19 @@ export class NoteComponent implements OnInit {
   }
 
   deleteData(id) {
-    this.noteService.deleteData(id).subscribe(
-      res => {
-        this.data = res;
-        this.toastr.error(JSON.stringify(this.data.message), "", {
-          timeOut: 2000,
-          progressBar: true,
-          positionClass: "toast-bottom-right"
-        });
+    if(confirm("Are you sure that you want to delete this note?")) {
+      this.noteService.deleteData(id).subscribe(
+        res => {
+          this.data = res;
+          this.toastr.error(JSON.stringify(this.data.message), "", {
+            timeOut: 2000,
+            progressBar: true,
+            positionClass: "toast-bottom-right"
+          });
 
-        this.getData();
-      }
-    );
+          this.getData();
+        }
+      );
+    }
   }
 }

@@ -3,7 +3,7 @@
     <thead>
       <tr class="bg-slate-300">
         <th class="px-4 py-1.5 border border-slate-500" scope="col"><button class="text-blue-700 font-bold hover:underline" (click)="isSortedByNameAsc ? sortByNameDesc() : sortByNameAsc()">{{isSortedByNameAsc == true ? "↑ Name" : "↓ Name"}}</button></th>
-        <th class="px-4 py-1.5 border border-slate-500" scope="col">Weight</th>
+        <th class="px-4 py-1.5 border border-slate-500" scope="col">Importance</th>
         <th class="px-4 py-1.5 border border-slate-500" scope="col"></th>
         <th class="px-4 py-1.5 border border-slate-500" scope="col"></th>
       </tr>
@@ -12,7 +12,7 @@
     <tbody>
       <tr *ngFor="let task of tasks">
         <td class="px-4 py-1.5 border border-slate-500">{{task.name}}</td>
-        <td class="px-4 py-1.5 border border-slate-500">{{task.weight}}</td>
+        <td class="px-4 py-1.5 border border-slate-500">{{task.importance}}</td>
         <td class="px-4 py-1.5 border border-slate-500">
           <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-4 mx-2 rounded focus:outline-none focus:shadow-outline" routerLink="/task/edit/{{task._id}}">Edit</button>
         </td>

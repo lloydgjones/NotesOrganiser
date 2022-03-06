@@ -17,7 +17,7 @@ const Task = mongoose.model('Task', {
         type: Date,
         required: false
     },
-    weight: {
+    importance: {
         type: Number,
         required: false
     }

@@ -22,7 +22,7 @@ export class EditTaskComponent implements OnInit {
     name: new FormControl(''),
     content: new FormControl(''),
     time: new FormControl(''),
-    weight: new FormControl('')
+    importance: new FormControl('')
   })
 
   ngOnInit(): void {
@@ -40,7 +40,7 @@ export class EditTaskComponent implements OnInit {
           name: new FormControl(this.task.name),
           content: new FormControl(this.task.content),
           time: new FormControl(this.normalTime),
-          weight: new FormControl(this.task.weight)
+          importance: new FormControl(this.task.importance)
         });
       }
     );
@@ -60,17 +60,19 @@ export class EditTaskComponent implements OnInit {
   }
 
   deleteData(id) {
-    this.taskService.deleteData(id).subscribe(
-      res => {
-        this.data = res;
-        this.toastr.error(JSON.stringify(this.data.message), "", {
-          timeOut: 2000,
-          progressBar: true,
-          positionClass: "toast-bottom-right"
-        });
-        this.getData();
-        this._router.navigateByUrl('/tasks');
-      }
-    );
+    if(confirm("Are you sure that you want to delete this note?")) {
+      this.taskService.deleteData(id).subscribe(
+        res => {
+          this.data = res;
+          this.toastr.error(JSON.stringify(this.data.message), "", {
+            timeOut: 2000,
+            progressBar: true,
+            positionClass: "toast-bottom-right"
+          });
+          this.getData();
+          this._router.navigateByUrl('/tasks');
+        }
+      );
+    }
   }
 }
