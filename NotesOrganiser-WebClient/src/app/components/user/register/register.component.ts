@@ -11,6 +11,7 @@ import { UserService } from 'src/app/services/user/user.service';
 })
 export class RegisterComponent implements OnInit {
   data: any;
+  isPasswordVisible = false;
   registerForm: FormGroup = new FormGroup({
     email: new FormControl(null, [Validators.email, Validators.required]),
     username: new FormControl(null, Validators.required),
@@ -25,6 +26,10 @@ export class RegisterComponent implements OnInit {
     .subscribe(
       data=>this._router.navigate(['/settings'])
     );
+  }
+
+  togglePasswordVisibility(){
+    this.isPasswordVisible = !this.isPasswordVisible;
   }
 
   register(){

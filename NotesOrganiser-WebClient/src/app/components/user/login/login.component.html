@@ -6,7 +6,10 @@
     </div>
     <div class="mb-4">
       <label class="block text-gray-700 text-md font-bold mb-2" for="inputPassword">Password</label>
-      <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none" formControlName="password" type="password" placeholder="Enter Password">
+      <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none" formControlName="password" [type]="isPasswordVisible ? 'text' : 'password'" placeholder="Enter Password">
+    </div>
+    <div class="mb-4">
+      <input type="checkbox" (click)="togglePasswordVisibility()"> Show Password
     </div>
     <div class="flex items-center mt-5">
         <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mx-2 rounded focus:outline-none focus:shadow-outline" type="button" (click)="login()">Log In</button>

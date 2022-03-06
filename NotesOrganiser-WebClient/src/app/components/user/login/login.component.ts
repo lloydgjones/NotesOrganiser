@@ -11,6 +11,7 @@ import { UserService } from 'src/app/services/user/user.service';
 })
 export class LoginComponent implements OnInit {
   data: any;
+  isPasswordVisible = false;
   loginForm: FormGroup = new FormGroup({
     email: new FormControl(null, [Validators.email, Validators.required]),
     password: new FormControl(null, Validators.required)
@@ -23,6 +24,10 @@ export class LoginComponent implements OnInit {
     .subscribe(
       data=>this._router.navigate(['/settings'])
     );
+  }
+
+  togglePasswordVisibility(){
+    this.isPasswordVisible = !this.isPasswordVisible;
   }
 
   login(){
