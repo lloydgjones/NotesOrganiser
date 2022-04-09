@@ -54,14 +54,16 @@ export class CalendarComponent implements OnInit {
   noteToEvent(note : Note){
     return {
       title: note.name,
-      start: note.time.toLocaleString().replace('Z', '')
+      start: note.time.toLocaleString().replace('Z', ''),
+      url: "/#/note/edit/" + note._id
     };
   }
 
   taskToEvent(task : Task){
     return {
       title: task.name,
-      start: task.time.toLocaleString().replace('Z', '')
+      start: task.time.toLocaleString().replace('Z', ''),
+      url: "/#/task/edit/" + task._id
     };
   }
 
