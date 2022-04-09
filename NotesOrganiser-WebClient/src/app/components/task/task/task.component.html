@@ -1,9 +1,11 @@
-<div *ngIf="isDoneLoading" class="mx-2 my-2 lg:text-lg">
+<div *ngIf="isDoneLoading" class="mx-2 my-2 text-sm md:text-base lg:text-lg">
   <table class="border-collapse border border-slate-500 bg-slate-200">
     <thead>
       <tr class="bg-slate-300">
         <th class="px-4 py-1.5 border border-slate-500" scope="col"><button class="text-blue-600 font-bold underline hover:no-underline" (click)="isSortedByNameAsc ? sortByNameDesc() : sortByNameAsc()">{{isSortedByNameAsc == true ? "↑ Name" : "↓ Name"}}</button></th>
         <th class="px-4 py-1.5 border border-slate-500" scope="col">Importance</th>
+        <th class="px-4 py-1.5 border border-slate-500" scope="col">Tags</th>
+        <th class="px-4 py-1.5 border border-slate-500" scope="col">Date/Time</th>
         <th class="px-4 py-1.5 border border-slate-500" scope="col"></th>
       </tr>
     </thead>
@@ -12,6 +14,8 @@
       <tr *ngFor="let task of tasks">
         <td class="px-4 py-1.5 border border-slate-500 text-blue-600 font-bold underline hover:no-underline" routerLink="/task/edit/{{task._id}}">{{task.name}}</td>
         <td class="px-4 py-1.5 border border-slate-500">{{task.importance}}</td>
+        <td class="px-4 py-1.5 border border-slate-500">{{task.tags}}</td>
+        <td class="px-4 py-1.5 border border-slate-500">{{task.time | date : "dd/MM/yy HH:mm:ss"}}</td>
         <td class="px-4 py-1.5 border border-slate-500">
           <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-4 mx-2 rounded focus:outline-none focus:shadow-outline" type="button" (click)="deleteData(task._id)">Delete</button>
         </td>
