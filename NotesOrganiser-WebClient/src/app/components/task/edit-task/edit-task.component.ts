@@ -52,6 +52,8 @@ export class EditTaskComponent implements OnInit {
 
     if(this.editTaskForm.invalid) { return; }
 
+    this.editTaskForm.value.tags = this.editTaskForm.value.tags.split(',');
+
     this.taskService.editData(this.id, this.editTaskForm.value).subscribe(
       res => {
         this.data = res;

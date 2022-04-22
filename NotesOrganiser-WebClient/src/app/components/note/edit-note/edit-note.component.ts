@@ -51,6 +51,8 @@ export class EditNoteComponent implements OnInit {
 
     if(this.editNoteForm.invalid) { return; }
 
+    this.editNoteForm.value.tags = this.editNoteForm.value.tags.split(',');
+
     this.noteService.editData(this.id, this.editNoteForm.value).subscribe(
       res => {
         this.data = res;

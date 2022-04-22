@@ -54,6 +54,8 @@ export class AddTaskComponent implements OnInit {
 
     if(this.addTaskForm.invalid) { return; }
 
+    this.addTaskForm.value.tags = this.addTaskForm.value.tags.split(',');
+
     this.taskService.insertData(this.addTaskForm.value).subscribe(
       res => {
         this.data = res;

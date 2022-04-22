@@ -52,6 +52,8 @@ export class AddNoteComponent implements OnInit {
 
     if(this.addNoteForm.invalid) { return; }
 
+    this.addNoteForm.value.tags = this.addNoteForm.value.tags.split(',');
+
     this.noteService.insertData(this.addNoteForm.value).subscribe(
       res => {
         this.data = res;
