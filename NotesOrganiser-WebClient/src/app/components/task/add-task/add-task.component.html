@@ -1,23 +1,23 @@
-<div class="mx-2 my-2">
+<div class="mx-2 my-2" *ngIf="isDoneLoading">
   <form (ngSubmit)="insertData()" [formGroup]="addTaskForm">
     <div>
-      <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none" type="text" formControlName="name" [ngClass]="{ 'is-invalid': submitted && f.name.errors }" placeholder="Enter Name">
-
-      <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
-        <div class="text-red-600" *ngIf="f.name.errors.required">Tasks must have a name.</div>
-      </div>
+      <input class="shadow appearance-none border rounded w-full px-4 py-4 text-gray-700 focus:outline-none mb-2" type="text" formControlName="name" [ngClass]="{ 'is-invalid': submitted && f.name.errors }" placeholder="Enter Name">
     </div>
 
-    <div class="mt-4">
-      <quill-editor type="text" formControlName="content" [ngClass]="{ 'is-invalid': submitted && f.content.errors }" placeholder="Enter Task Text" [maxLength]="250"></quill-editor>
+    <div *ngIf="submitted && f.name.errors">
+      <div class="text-red-600 ml-1" *ngIf="f.name.errors.required">Tasks must have a name.</div>
+    </div>
 
-      <div *ngIf="submitted && f.content.errors" class="invalid-feedback">
-        <div class="text-red-600" *ngIf="f.content.errors.required">Tasks must have some content.</div>
-      </div>
+    <div class="my-2">
+      <quill-editor type="text" formControlName="content" [ngClass]="{ 'is-invalid': submitted && f.content.errors }" placeholder="Enter Task Text"></quill-editor>
+    </div>
+
+    <div *ngIf="submitted && f.content.errors">
+      <div class="text-red-600 ml-1" *ngIf="f.content.errors">Tasks must be between 1 and 300 characters.</div>
     </div>
 
     <div>
-      <input type="datetime-local" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none mt-4" formControlName="time">
+      <input type="datetime-local" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none mt-2" formControlName="time">
     </div>
 
     <div>
@@ -26,11 +26,11 @@
 
     <div>
       <select class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none mt-4" formControlName="importance">
-          <option value="" disabled selected>Importance</option>
-          <option value=1>1</option>
-          <option value=2>2</option>
-          <option value=3>3</option>
-          <option value=4>4</option>
+        <option value="" disabled selected>Importance</option>
+        <option value=1>1</option>
+        <option value=2>2</option>
+        <option value=3>3</option>
+        <option value=4>4</option>
       </select>
     </div>
 

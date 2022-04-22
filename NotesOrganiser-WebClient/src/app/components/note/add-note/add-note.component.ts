@@ -11,6 +11,7 @@ import { UserService } from 'src/app/services/user/user.service';
   styleUrls: ['./add-note.component.css']
 })
 export class AddNoteComponent implements OnInit {
+  isDoneLoading: boolean = false;
   data: any;
   email: String;
   submitted=false;
@@ -20,12 +21,13 @@ export class AddNoteComponent implements OnInit {
 
   createForm() {
     this.addNoteForm = this.formBuilder.group({
-      account: '',
+      account: [''],
       name: ['', Validators.required],
       content: ['', Validators.required],
       time: [''],
       tags: ['']
     });
+    this.isDoneLoading = true;
   }
 
   ngOnInit(): void {
@@ -48,9 +50,7 @@ export class AddNoteComponent implements OnInit {
   insertData() {
     this.submitted=true;
 
-    if(this.addNoteForm.invalid) {
-        return;
-      }
+    if(this.addNoteForm.invalid) { return; }
 
     this.noteService.insertData(this.addNoteForm.value).subscribe(
       res => {

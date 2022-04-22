@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Note } from 'src/app/models/note/note.model';
@@ -11,19 +11,15 @@ import { NoteService } from 'src/app/services/note/note.service';
   styleUrls: ['./edit-note.component.css']
 })
 export class EditNoteComponent implements OnInit {
+  isDoneLoading: boolean = false;
   note = new Note();
   id: any;
   data: any;
-  normalTime: any;
+  submitted=false;
+  normalisedTime: any;
+  editNoteForm: FormGroup;
 
-  constructor(private _router: Router, private noteService: NoteService, private route: ActivatedRoute, private toastr: ToastrService) { }
-
-  editNoteForm = new FormGroup({
-    name: new FormControl(''),
-    content: new FormControl(''),
-    time: new FormControl(''),
-    tags: new FormControl('')
-  })
+  constructor(private _router: Router, private noteService: NoteService, private formBuilder: FormBuilder, private route: ActivatedRoute, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params.id;
@@ -35,18 +31,26 @@ export class EditNoteComponent implements OnInit {
       res => {
         this.data = res;
         this.note = this.data;
-        if(this.note.time != null) { this.normalTime = this.note.time.toLocaleString().replace('Z', '') }
-        this.editNoteForm = new FormGroup({
-          name: new FormControl(this.note.name),
-          content: new FormControl(this.note.content),
-          time: new FormControl(this.normalTime),
-          tags: new FormControl(this.note.tags)
-        }
-      );
-    })
+        if(this.note.time != null) { this.normalisedTime = this.note.time.toLocaleString().replace('Z', '') }
+        this.editNoteForm = this.formBuilder.group({
+          name: [this.note.name, Validators.required],
+          content: [this.note.content, Validators.required],
+          time: [this.normalisedTime],
+          tags: [this.note.tags]
+        });
+        this.isDoneLoading = true;
+      }
+    );
   }
 
+  get f() {
+    return this.editNoteForm.controls;
+  }
   editData() {
+    this.submitted=true;
+
+    if(this.editNoteForm.invalid) { return; }
+
     this.noteService.editData(this.id, this.editNoteForm.value).subscribe(
       res => {
         this.data = res;

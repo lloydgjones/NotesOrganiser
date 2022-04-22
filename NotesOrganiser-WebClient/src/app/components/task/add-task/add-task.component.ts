@@ -11,6 +11,7 @@ import { UserService } from 'src/app/services/user/user.service';
   styleUrls: ['./add-task.component.css']
 })
 export class AddTaskComponent implements OnInit {
+  isDoneLoading: boolean = false;
   data: any;
   email: String;
   submitted=false;
@@ -20,13 +21,14 @@ export class AddTaskComponent implements OnInit {
 
   createForm() {
     this.addTaskForm = this.formBuilder.group({
-      account: '',
+      account: [''],
       name: ['', Validators.required],
-      content: ['', Validators.required],
+      content: ['', [Validators.required, Validators.maxLength(300)]],
       time: [''],
       tags: [''],
       importance: ['']
     });
+    this.isDoneLoading = true;
   }
 
   ngOnInit(): void {
@@ -50,9 +52,7 @@ export class AddTaskComponent implements OnInit {
   insertData() {
     this.submitted=true;
 
-    if(this.addTaskForm.invalid) {
-        return;
-      }
+    if(this.addTaskForm.invalid) { return; }
 
     this.taskService.insertData(this.addTaskForm.value).subscribe(
       res => {
