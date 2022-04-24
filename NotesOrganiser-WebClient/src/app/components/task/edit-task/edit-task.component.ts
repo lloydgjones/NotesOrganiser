@@ -52,12 +52,12 @@ export class EditTaskComponent implements OnInit {
 
     if(this.editTaskForm.invalid) { return; }
 
-    this.editTaskForm.value.tags = this.editTaskForm.value.tags.split(',');
+    this.editTaskForm.value.tags = this.editTaskForm.value.tags.toString().split(',');
 
     this.taskService.editData(this.id, this.editTaskForm.value).subscribe(
       res => {
         this.data = res;
-        this.toastr.success(JSON.stringify(this.data.message), "Success", {
+        this.toastr.success(this.data.message, "Success", {
           timeOut: 2000,
           progressBar: true,
           positionClass: "toast-bottom-right"
@@ -71,7 +71,7 @@ export class EditTaskComponent implements OnInit {
       this.taskService.deleteData(id).subscribe(
         res => {
           this.data = res;
-          this.toastr.error(JSON.stringify(this.data.message), "", {
+          this.toastr.success(this.data.message, "Success", {
             timeOut: 2000,
             progressBar: true,
             positionClass: "toast-bottom-right"

@@ -16,8 +16,8 @@ export class RegisterComponent implements OnInit {
   registerForm: FormGroup = new FormGroup({
     email: new FormControl(null, [Validators.email, Validators.required]),
     username: new FormControl(null, Validators.required),
-    password1: new FormControl(null, Validators.required),
-    password2: new FormControl(null, Validators.required)
+    password1: new FormControl(null, [Validators.required, Validators.minLength(8)]),
+    password2: new FormControl(null, [Validators.required, Validators.minLength(8)])
   })
 
   constructor(private _router: Router, private _user: UserService, private toastr: ToastrService) { }
@@ -40,7 +40,7 @@ export class RegisterComponent implements OnInit {
     this.submitted=true;
 
     if(!this.registerForm.valid || (this.registerForm.controls.password1.value != this.registerForm.controls.password2.value)){
-      this.toastr.error("Invalid Form", "Error", {
+      this.toastr.error("Invalid Registration Form", "Error", {
         timeOut: 2000,
         progressBar: true,
         positionClass: "toast-bottom-right"
@@ -61,7 +61,7 @@ export class RegisterComponent implements OnInit {
       },
       err => {
         this.data = err;
-        this.toastr.error(JSON.stringify(this.data.message), "Error", {
+        this.toastr.error(this.data.error.message, "Error", {
           timeOut: 2000,
           progressBar: true,
           positionClass: "toast-bottom-right"

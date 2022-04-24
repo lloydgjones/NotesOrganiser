@@ -32,7 +32,7 @@ export class SettingsComponent implements OnInit {
     this._user.logout().subscribe(
       res => {
         this.data = res;
-        this.toastr.success(JSON.stringify(this.data.message), "Success", {
+        this.toastr.success(this.data.message, "Success", {
           timeOut: 1500,
           progressBar: true,
           positionClass: "toast-bottom-right"

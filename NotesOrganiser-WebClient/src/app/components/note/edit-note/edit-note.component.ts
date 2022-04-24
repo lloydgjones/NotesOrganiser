@@ -51,12 +51,12 @@ export class EditNoteComponent implements OnInit {
 
     if(this.editNoteForm.invalid) { return; }
 
-    this.editNoteForm.value.tags = this.editNoteForm.value.tags.split(',');
+    this.editNoteForm.value.tags = this.editNoteForm.value.tags.toString().split(',');
 
     this.noteService.editData(this.id, this.editNoteForm.value).subscribe(
       res => {
         this.data = res;
-        this.toastr.success(JSON.stringify(this.data.message), "Success", {
+        this.toastr.success(this.data.message, "Success", {
           timeOut: 2000,
           progressBar: true,
           positionClass: "toast-bottom-right"
@@ -70,7 +70,7 @@ export class EditNoteComponent implements OnInit {
       this.noteService.deleteData(id).subscribe(
         res => {
           this.data = res;
-          this.toastr.error(JSON.stringify(this.data.message), "", {
+          this.toastr.success(this.data.message, "Success", {
             timeOut: 2000,
             progressBar: true,
             positionClass: "toast-bottom-right"

@@ -11,7 +11,7 @@
       <label class="block text-gray-700 text-md font-bold mb-2" for="inputPassword">Password</label>
       <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none" formControlName="password" [type]="isPasswordVisible ? 'text' : 'password'" placeholder="Enter Password">
       <div *ngIf="submitted && f.password.errors">
-        <div class="text-red-600" *ngIf="f.password.errors.required">Enter your password.</div>
+        <div class="text-red-600" *ngIf="f.password.errors.required">Enter a password.</div>
       </div>
     </div>
     <div class="mb-4">

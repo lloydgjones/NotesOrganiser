@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit {
     this.submitted=true;
 
     if(!this.loginForm.valid){
-      this.toastr.error("Invalid Form", "Error", {
+      this.toastr.error("Invalid Login Form", "Error", {
         timeOut: 2000,
         progressBar: true,
         positionClass: "toast-bottom-right"
@@ -49,7 +49,7 @@ export class LoginComponent implements OnInit {
     this._user.login(JSON.stringify(this.loginForm.value)).subscribe(
       res => {
         this.data = res;
-        this.toastr.success(JSON.stringify(this.data.message), "Success", {
+        this.toastr.success(this.data.message, "Success", {
           timeOut: 2000,
           progressBar: true,
           positionClass: "toast-bottom-right"

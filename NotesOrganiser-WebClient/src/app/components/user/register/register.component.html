@@ -11,21 +11,21 @@
       <label class="block text-gray-700 text-md font-bold mb-2" for="inputUsername">Username</label>
       <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none" formControlName="username" type="text" placeholder="Enter Username">
       <div *ngIf="submitted && f.username.errors">
-        <div class="text-red-600" *ngIf="f.username.errors.required">Enter your username.</div>
+        <div class="text-red-600" *ngIf="f.username.errors.required">Enter a username.</div>
       </div>
     </div>
     <div class="mb-4">
       <label class="block text-gray-700 text-md font-bold mb-2" for="inputPassword1">Password</label>
       <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none" formControlName="password1" [type]="isPasswordVisible ? 'text' : 'password'" placeholder="Enter Password">
       <div *ngIf="submitted && f.password1.errors">
-        <div class="text-red-600" *ngIf="f.password1.errors.required">Enter your password.</div>
+        <div class="text-red-600" *ngIf="f.password1.errors">Your password must be at least 8 characters.</div>
       </div>
     </div>
     <div class="mb-4">
       <label class="block text-gray-700 text-md font-bold mb-2" for="inputPassword2">Confirm Password</label>
       <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none" formControlName="password2" [type]="isPasswordVisible ? 'text' : 'password'" placeholder="Repeat Password">
       <div *ngIf="submitted && f.password2.errors">
-        <div class="text-red-600" *ngIf="f.password2.errors.required">Enter your password again.</div>
+        <div class="text-red-600" *ngIf="f.password2.errors.required">Your passwords must match.</div>
       </div>
     </div>
     <div class="mb-4">

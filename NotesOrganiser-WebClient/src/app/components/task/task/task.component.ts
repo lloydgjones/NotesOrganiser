@@ -56,7 +56,7 @@ export class TaskComponent implements OnInit {
       this.taskService.deleteData(id).subscribe(
         res => {
           this.data = res;
-          this.toastr.error(JSON.stringify(this.data.message), "", {
+          this.toastr.success(this.data.message, "Success", {
             timeOut: 2000,
             progressBar: true,
             positionClass: "toast-bottom-right"
