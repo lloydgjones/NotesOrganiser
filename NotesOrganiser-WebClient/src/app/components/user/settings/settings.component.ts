@@ -16,10 +16,9 @@ export class SettingsComponent implements OnInit {
   constructor(private _router: Router, private _user: UserService, private toastr: ToastrService) { }
 
   ngOnInit(): void {
-    this._user.getUser()
-    .subscribe(
-      data=>this.getName(data),
-      error=>this._router.navigate(['/login'])
+    this._user.getUser().subscribe(
+      res=>this.getName(res),
+      err=>this._router.navigate(['/login'])
     );
   }
 

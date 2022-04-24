@@ -19,10 +19,10 @@ router.get('/api/user/logout', isValidUser, function (req, res) {
 // Log In
 router.post('/api/user/login', function (req, res, next) {
     passport.authenticate('strat', function(err, user, info) {
-        if (err) { return res.status(501).json(err); }
-        if (!user) { return res.status(501).json(info); }
+        if (err) { return res.status(401).json(err); }
+        if (!user) { return res.status(404).json(info); }
         req.logIn(user, function(err) {
-            if (err) { return res.status(501).json(err); }
+            if (err) { return res.status(401).json(err); }
             return res.status(200).json({message: 'You have logged in.'});
         });
     })(req, res, next);

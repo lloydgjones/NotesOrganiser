@@ -37,7 +37,7 @@ router.post('/api/task/add', (req, res) => {
     });
     task.save((err, data) => {
         if(!err) {
-            res.status(200).json({ code: 200, message: 'Task Added', addTask: data })
+            res.status(200).json({message: 'Task Added'})
         } else {
            console.log(err);
         }
@@ -55,7 +55,7 @@ router.put('/api/task/update/:id', (req, res) => {
     };
     Task.findByIdAndUpdate(req.params.id, { $set:task }, { new:true }, (err, data) => {
         if(!err) {
-            res.status(200).json({ code: 200, message: 'Task Updated', updateTask: data })
+            res.status(200).json({message: 'Task Updated'})
         } else {
            console.log(err);
         }
@@ -66,7 +66,7 @@ router.put('/api/task/update/:id', (req, res) => {
 router.delete('/api/task/:id', (req, res) => {
     Task.findByIdAndRemove(req.params.id, (err, data) => {
         if(!err) {
-            res.status(200).json({ code: 200, message: 'Task Deleted', deleteTask: data })
+            res.status(200).json({message: 'Task Deleted'})
         } else{
             console.log(err);
         }

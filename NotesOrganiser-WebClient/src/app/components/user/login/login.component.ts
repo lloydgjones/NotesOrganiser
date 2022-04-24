@@ -21,9 +21,8 @@ export class LoginComponent implements OnInit {
   constructor(private _router: Router, private _user: UserService, private toastr: ToastrService) { }
 
   ngOnInit(): void {
-    this._user.getUser()
-    .subscribe(
-      data=>this._router.navigate(['/settings'])
+    this._user.getUser().subscribe(
+      res=>this._router.navigate(['/settings'])
     );
   }
 

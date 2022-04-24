@@ -36,7 +36,7 @@ router.post('/api/note/add', (req, res) => {
     });
     note.save((err, data) => {
         if(!err) {
-            res.status(200).json({ code: 200, message: 'Note Added', addNote: data })
+            res.status(200).json({message: 'Note Added'})
         } else {
            console.log(err);
         }
@@ -53,7 +53,7 @@ router.put('/api/note/update/:id', (req, res) => {
     };
     Note.findByIdAndUpdate(req.params.id, { $set:note }, { new:true }, (err, data) => {
         if(!err) {
-            res.status(200).json({ code: 200, message: 'Note Updated', updateNote: data })
+            res.status(200).json({message: 'Note Updated'})
         } else {
            console.log(err);
         }
@@ -64,7 +64,7 @@ router.put('/api/note/update/:id', (req, res) => {
 router.delete('/api/note/:id', (req, res) => {
     Note.findByIdAndRemove(req.params.id, (err, data) => {
         if(!err) {
-            res.status(200).json({ code: 200, message: 'Note Deleted', deleteNote: data })
+            res.status(200).json({message: 'Note Deleted'})
         } else{
             console.log(err);
         }

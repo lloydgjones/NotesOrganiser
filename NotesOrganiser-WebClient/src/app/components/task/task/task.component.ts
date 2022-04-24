@@ -19,10 +19,9 @@ export class TaskComponent implements OnInit {
   constructor(private _router: Router, private _user: UserService, private taskService: TaskService, private toastr: ToastrService) { }
 
   ngOnInit(): void {
-    this._user.getUser()
-    .subscribe(
-      data=>this.getAccount(data),
-      error=>this._router.navigate(['/login'])
+    this._user.getUser().subscribe(
+      res=>this.getAccount(res),
+      err=>this._router.navigate(['/login'])
     );
   }
 

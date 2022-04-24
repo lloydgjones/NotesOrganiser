@@ -39,10 +39,9 @@ export class CalendarComponent implements OnInit {
   constructor(private _router: Router, private _user: UserService, private noteService: NoteService, private taskService: TaskService) { }
 
   ngOnInit(): void {
-    this._user.getUser()
-    .subscribe(
-      data=>this.getAccount(data),
-      error=>this._router.navigate(['/login'])
+    this._user.getUser().subscribe(
+      res=>this.getAccount(res),
+      err=>this._router.navigate(['/login'])
     );
   }
 
