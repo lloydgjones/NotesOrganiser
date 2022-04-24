@@ -24,7 +24,9 @@ export class CalendarComponent implements OnInit {
     nextDayThreshold: '02:00:00',
     initialView: 'dayGridMonth',
     displayEventTime: true,
-    aspectRatio: 2.8,
+    height: "auto",
+    contentHeight: "auto",
+    expandRows: true,
     buttonText: {
       today: 'Today'
     },
