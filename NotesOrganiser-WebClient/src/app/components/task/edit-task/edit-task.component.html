@@ -26,6 +26,7 @@
 
     <div>
       <select class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none mt-4" formControlName="importance">
+        <option value="" disabled [selected]="editTaskForm.controls['importance'].value === null ? true : false">Importance</option>
         <option value=1>1</option>
         <option value=2>2</option>
         <option value=3>3</option>
