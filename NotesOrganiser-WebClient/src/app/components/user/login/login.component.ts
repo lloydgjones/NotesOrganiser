@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit {
 
     if(!this.loginForm.valid){
       this.toastr.error("Invalid Login Form", "Error", {
-        timeOut: 2000,
+        timeOut: 3000,
         progressBar: true,
         positionClass: "toast-bottom-right"
       });
@@ -49,7 +49,7 @@ export class LoginComponent implements OnInit {
       res => {
         this.data = res;
         this.toastr.success(this.data.message, "Success", {
-          timeOut: 2000,
+          timeOut: 3000,
           progressBar: true,
           positionClass: "toast-bottom-right"
         });

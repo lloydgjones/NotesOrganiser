@@ -40,7 +40,7 @@ export class RegisterComponent implements OnInit {
 
     if(!this.registerForm.valid || (this.registerForm.controls.password1.value != this.registerForm.controls.password2.value)){
       this.toastr.error("Invalid Registration Form", "Error", {
-        timeOut: 2000,
+        timeOut: 3000,
         progressBar: true,
         positionClass: "toast-bottom-right"
       });
@@ -51,7 +51,7 @@ export class RegisterComponent implements OnInit {
       res => {
         this.data = res;
         this.toastr.success(this.data.message, "Success", {
-          timeOut: 2000,
+          timeOut: 3000,
           progressBar: true,
           positionClass: "toast-bottom-right"
         });
@@ -61,7 +61,7 @@ export class RegisterComponent implements OnInit {
       err => {
         this.data = err;
         this.toastr.error(this.data.error.message, "Error", {
-          timeOut: 2000,
+          timeOut: 3000,
           progressBar: true,
           positionClass: "toast-bottom-right"
         });

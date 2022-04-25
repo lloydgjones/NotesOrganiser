@@ -57,7 +57,7 @@ export class EditNoteComponent implements OnInit {
       res => {
         this.data = res;
         this.toastr.success(this.data.message, "Success", {
-          timeOut: 2000,
+          timeOut: 3000,
           progressBar: true,
           positionClass: "toast-bottom-right"
         });
@@ -71,7 +71,7 @@ export class EditNoteComponent implements OnInit {
         res => {
           this.data = res;
           this.toastr.success(this.data.message, "Success", {
-            timeOut: 2000,
+            timeOut: 3000,
             progressBar: true,
             positionClass: "toast-bottom-right"
           });
