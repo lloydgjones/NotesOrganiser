@@ -14,7 +14,7 @@ export class AddTaskComponent implements OnInit {
   isDoneLoading: boolean = false;
   data: any;
   email: String;
-  submitted=false;
+  submitted = false;
   addTaskForm: FormGroup;
 
   constructor(private _router: Router, private _user: UserService, private taskService: TaskService, private formBuilder: FormBuilder, private toastr: ToastrService) { }
@@ -49,7 +49,7 @@ export class AddTaskComponent implements OnInit {
     return this.addTaskForm.controls;
   }
   insertData() {
-    this.submitted=true;
+    this.submitted = true;
 
     if(this.addTaskForm.invalid) { return; }
 

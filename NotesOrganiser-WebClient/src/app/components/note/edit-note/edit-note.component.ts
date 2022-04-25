@@ -15,8 +15,8 @@ export class EditNoteComponent implements OnInit {
   note = new Note();
   id: any;
   data: any;
-  submitted=false;
-  normalisedTime: any;
+  submitted = false;
+  localTime: any;
   editNoteForm: FormGroup;
 
   constructor(private _router: Router, private noteService: NoteService, private formBuilder: FormBuilder, private route: ActivatedRoute, private toastr: ToastrService) { }
@@ -31,11 +31,16 @@ export class EditNoteComponent implements OnInit {
       res => {
         this.data = res;
         this.note = this.data;
-        if(this.note.time != null) { this.normalisedTime = this.note.time.toLocaleString().replace('Z', '') }
+
+        if(this.note.time != null) {
+          const tempDate = new Date(this.note.time);
+          this.localTime = (new Date(tempDate.getTime() - tempDate.getTimezoneOffset() * 60000).toISOString()).slice(0, -1);
+        }
+
         this.editNoteForm = this.formBuilder.group({
           name: [this.note.name, Validators.required],
           content: [this.note.content, Validators.required],
-          time: [this.normalisedTime],
+          time: [this.localTime],
           tags: [this.note.tags]
         });
         this.isDoneLoading = true;
@@ -47,7 +52,7 @@ export class EditNoteComponent implements OnInit {
     return this.editNoteForm.controls;
   }
   editData() {
-    this.submitted=true;
+    this.submitted = true;
 
     if(this.editNoteForm.invalid) { return; }
 

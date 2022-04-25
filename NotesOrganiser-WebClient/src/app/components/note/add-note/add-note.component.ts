@@ -14,7 +14,7 @@ export class AddNoteComponent implements OnInit {
   isDoneLoading: boolean = false;
   data: any;
   email: String;
-  submitted=false;
+  submitted = false;
   addNoteForm: FormGroup;
 
   constructor(private _router: Router, private _user: UserService, private noteService: NoteService, private formBuilder: FormBuilder, private toastr: ToastrService) { }
@@ -48,7 +48,7 @@ export class AddNoteComponent implements OnInit {
     return this.addNoteForm.controls;
   }
   insertData() {
-    this.submitted=true;
+    this.submitted = true;
 
     if(this.addNoteForm.invalid) { return; }
 

@@ -15,8 +15,8 @@ export class EditTaskComponent implements OnInit {
   task = new Task();
   id: any;
   data: any;
-  submitted=false;
-  normalisedTime: any;
+  submitted = false;
+  localTime: any;
   editTaskForm: FormGroup;
 
   constructor(private _router: Router, private taskService: TaskService, private formBuilder: FormBuilder, private route: ActivatedRoute, private toastr: ToastrService) { }
@@ -31,11 +31,16 @@ export class EditTaskComponent implements OnInit {
       res => {
         this.data = res;
         this.task = this.data;
-        if(this.task.time != null) { this.normalisedTime = this.task.time.toLocaleString().replace('Z', '') }
+
+        if(this.task.time != null) {
+          const tempDate = new Date(this.task.time);
+          this.localTime = (new Date(tempDate.getTime() - tempDate.getTimezoneOffset() * 60000).toISOString()).slice(0, -1);
+        }
+
         this.editTaskForm = this.formBuilder.group({
           name: [this.task.name, Validators.required],
           content: [this.task.content, [Validators.required, Validators.maxLength(300)]],
-          time: [this.normalisedTime],
+          time: [this.localTime],
           tags: [this.task.tags],
           importance: [this.task.importance]
         });
@@ -48,7 +53,7 @@ export class EditTaskComponent implements OnInit {
     return this.editTaskForm.controls;
   }
   editData() {
-    this.submitted=true;
+    this.submitted = true;
 
     if(this.editTaskForm.invalid) { return; }
 

@@ -11,7 +11,7 @@ import { UserService } from 'src/app/services/user/user.service';
 })
 export class LoginComponent implements OnInit {
   data: any;
-  submitted=false;
+  submitted = false;
   isPasswordVisible = false;
   loginForm: FormGroup = new FormGroup({
     email: new FormControl(null, [Validators.email, Validators.required]),
@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
     return this.loginForm.controls;
   }
   login(){
-    this.submitted=true;
+    this.submitted = true;
 
     if(!this.loginForm.valid){
       this.toastr.error("Invalid Login Form", "Error", {

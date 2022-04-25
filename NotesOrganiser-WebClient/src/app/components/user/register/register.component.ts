@@ -11,7 +11,7 @@ import { UserService } from 'src/app/services/user/user.service';
 })
 export class RegisterComponent implements OnInit {
   data: any;
-  submitted=false;
+  submitted = false;
   isPasswordVisible = false;
   registerForm: FormGroup = new FormGroup({
     email: new FormControl(null, [Validators.email, Validators.required]),
@@ -36,7 +36,7 @@ export class RegisterComponent implements OnInit {
     return this.registerForm.controls;
   }
   register(){
-    this.submitted=true;
+    this.submitted = true;
 
     if(!this.registerForm.valid || (this.registerForm.controls.password1.value != this.registerForm.controls.password2.value)){
       this.toastr.error("Invalid Registration Form", "Error", {
